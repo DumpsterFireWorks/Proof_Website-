@@ -257,7 +257,7 @@ function ecosystemPage(): string {
         <div class="shell">
           <div class="section-heading section-heading--split section-heading--light">
             <div><p class="eyebrow eyebrow--light"><span></span>Operator surfaces</p><h2>Visibility is not authority.</h2></div>
-            <p>These interfaces help the owner understand and act through explicit boundaries. They do not replace the systems whose state they present.</p>
+            <p>Today, these read-only interfaces help the owner understand state through explicit boundaries. Governed actions are future work; the interfaces do not replace the systems whose state they present.</p>
           </div>
           <div class="lens-comparison">
             <article><span class="lens-scope">WIDE LENS</span><h3>Proof Control</h3><p>Ecosystem-wide operations and observability across the Proof landscape.</p><div><span>Core</span><span>Cloud</span><span>Deploy</span><span>Workloads</span></div><small>Underlying systems remain authoritative</small></article>

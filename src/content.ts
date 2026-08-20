@@ -43,7 +43,7 @@ export const products: Product[] = [
     subtitle: "Ecosystem operations and observability",
     category: "Operations",
     description: "Provides a local-first place to understand the ecosystem as a whole while leaving authority with the systems it observes.",
-    capabilities: ["Ecosystem overview", "Operational context", "Attention signals", "Authority-preserving actions"]
+    capabilities: ["Ecosystem overview", "Operational context", "Attention signals", "Read-only visibility"]
   },
   {
     name: "Proof Cloud App",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T16:36:49.005Z",
+  "generatedAt": "2026-08-20T22:26:19.388Z",
   "target": "local preview",
   "browser": "chrome.exe",
   "routes": 4,
@@ -65,7 +65,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3628
+      "bodyTextLength": 3687
     },
     {
       "route": "/products/",
@@ -84,7 +84,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3951
+      "bodyTextLength": 3943
     },
     {
       "route": "/principles/",
@@ -141,7 +141,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3628
+      "bodyTextLength": 3687
     },
     {
       "route": "/products/",
@@ -160,7 +160,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3951
+      "bodyTextLength": 3943
     },
     {
       "route": "/principles/",
@@ -217,7 +217,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3584
+      "bodyTextLength": 3643
     },
     {
       "route": "/products/",
@@ -236,7 +236,7 @@
       "hasForm": false,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 3951
+      "bodyTextLength": 3943
     },
     {
       "route": "/principles/",
