@@ -27,4 +27,4 @@ Do not infer the references from filenames.
 
 ## Accessibility rule
 
-The owner is colorblind, and Proof status/meaning elsewhere is intentionally not color-only. The website must likewise use text, hierarchy, shape/iconography, and contrast so meaning never depends on distinguishing similar colors.
+The website must use text, hierarchy, shape/iconography, and sufficient contrast so important meaning never depends on color alone.
