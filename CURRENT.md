@@ -1,26 +1,42 @@
 # Current — Proof Website
 
-**Status:** `W0 — ECOSYSTEM RESEARCH / PUBLIC WEBSITE FOUNDATION`
+**Status:** `ACTIVE — W1 PUBLIC PROOF ECOSYSTEM WEBSITE V1`
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`
 
-## Active gate
+## Accepted W0 foundation
 
 **Gate:** `W0 — Proof ecosystem research and public website foundation`  
-**Issue:** `#1`  
-**State:** `AWAITING_REVIEW`
+**Issue:** `#1 — CLOSED COMPLETE`  
+**PR:** `#2 — MERGED`  
+**Accepted head:** `7537387c59bebf79a08acb2082d5c87828e72ab0`  
+**Squash merge:** `1fd4804a0801c2790706f377c340609be31e911b`
 
-## W0 outcome
-
-W0 establishes the website before implementation:
+W0 locked:
 
 - researched canonical Proof product sources;
-- public-safe product/content map;
-- durable website product boundary;
-- locked V1 information architecture;
-- owner reference-image inventory;
-- website operating/review rules;
-- first implementation milestone definition.
+- public-safe ecosystem content map;
+- platform / operations / applications / concepts grouping;
+- V1 four-route information architecture;
+- owner reference-image preservation/inspection rules;
+- website operating, audit, and quality boundaries.
+
+## Active gate — W1
+
+**Gate:** `W1 — Public Proof Ecosystem Website V1`  
+**Issue:** `#3 — OPEN`  
+**State:** `READY_FOR_CODEX`
+
+## W1 required result
+
+Build a polished responsive public site implementing:
+
+- `/` — ecosystem-first home;
+- `/ecosystem` — modular architecture story;
+- `/products` — grouped Proof product/application directory;
+- `/principles` — owner-first architecture principles.
+
+Codex must inspect all five owner reference PNGs locally before choosing the visual system and preserve the originals unchanged.
 
 ## Locked public grouping
 
@@ -30,26 +46,36 @@ W0 establishes the website before implementation:
 - **Concepts:** OS
 - **Architecture/principles source:** Proof Infrastructure
 
-## Truth rules
+## Truth / public-safety rules
 
-- Product repositories remain authoritative for their products.
-- Proof Infrastructure remains authoritative for cross-product architecture and owner-first direction.
+- `ECOSYSTEM_CONTENT_MAP.md` is the W1 copy/content contract.
+- Product repos remain product truth; Proof Infrastructure remains cross-product architecture truth.
 - Current accepted state beats stale historical scope text.
-- The website summarizes; it never becomes source/runtime/deployment/host/data authority.
-- Do not expose private infrastructure/security/repository evidence publicly.
+- No private infrastructure/security/repository evidence in public output.
+- Do not represent Base/OS/unimplemented capabilities as available.
+- Do not conflate Proof Control with Proof Cloud App or the future authority/control-plane concept.
 
-## W0 stop condition
+## Hard boundaries
 
-Review the exact W0 bootstrap PR. If accepted:
+W1 does **not** authorize:
 
-1. merge W0;
-2. close Issue #1;
-3. promote one bounded `W1 — Public Ecosystem Website V1` implementation gate;
-4. Codex inspects all five owner reference PNGs locally before implementing visual design;
-5. no production DNS/hosting cutover is implied by W1.
+- public hosting/domain/DNS/provider changes;
+- Proof Deploy/Cloud/Core/Base/Control mutation;
+- paid services;
+- analytics/tracking/cookies;
+- forms/private-data collection;
+- accounts/auth;
+- public admin/live status controls;
+- commercialization/pricing/SLA claims.
 
-## Current next action
+## Codex authorization
 
-**REVIEW W0 EXACT HEAD.**
+**Proof Website Codex → `CONTINUE` means Issue #3 / W1 only.**
 
-Do not begin website implementation from this branch until W0 is accepted and W1 is explicitly promoted.
+Use one focused **DRAFT PR**. Run deterministic checks, production build, route/browser verification, and desktop/tablet/phone evidence. Include a concise summary of how the owner visual references informed the final design.
+
+Stop `AWAITING_REVIEW`.
+
+## Next valid action
+
+**Proof Website Codex → `CONTINUE`.**
