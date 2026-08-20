@@ -4,10 +4,13 @@ Milestones are public-product finish lines. Gates are bounded implementation pro
 
 ## W0 — Ecosystem research and website foundation
 
-**State:** ACTIVE / AWAITING_REVIEW  
-**Issue:** #1
+**State:** COMPLETE  
+**Issue:** #1 — closed  
+**PR:** #2 — merged  
+**Accepted head:** `7537387c59bebf79a08acb2082d5c87828e72ab0`  
+**Squash merge:** `1fd4804a0801c2790706f377c340609be31e911b`
 
-Finish line:
+Accepted finish line:
 
 - canonical Proof ecosystem researched;
 - public-safe content map locked;
@@ -18,9 +21,10 @@ Finish line:
 
 ## W1 — Public Ecosystem Website V1
 
-**State:** PARKED UNTIL W0 ACCEPTANCE
+**State:** ACTIVE / READY_FOR_CODEX  
+**Issue:** #3
 
-Potential finish line:
+Finish line:
 
 A polished responsive public website implements:
 
@@ -34,7 +38,8 @@ A polished responsive public website implements:
 - SEO/share metadata, sitemap/robots as appropriate;
 - strong desktop, iPad/tablet, and phone behavior;
 - deterministic build/lint/type checks and browser verification;
-- no backend/auth/database/CMS required unless implementation proves a need.
+- exact-head GitHub Actions CI appropriate to the selected stack;
+- no backend/auth/database/CMS/analytics unless a separately approved need appears.
 
 W1 does **not** authorize production DNS/domain cutover, paid services, tracking/analytics, public admin features, accounts, or live infrastructure status.
 
