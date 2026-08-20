@@ -47,8 +47,18 @@ Applications use only the layers they actually need. Quote, Room, and Flow delib
 
 Five PNG reference images are already committed on `main`. They must be inspected locally before first implementation and preserved unchanged.
 
+## Local development
+
+The W1 site is a static-first Vite project with no backend, accounts, forms, analytics, or external runtime content dependencies.
+
+```text
+npm ci
+npm run dev
+npm run verify
+```
+
+`npm run verify` type-checks the site, validates the four-route content and public-safety contract, proves the owner reference files are unchanged, builds the production artifact, and checks the resulting output.
+
 ## Current state
 
-W0 establishes researched ecosystem content, public-safety boundaries, information architecture, and project controls.
-
-The first implementation milestone, W1, is a polished responsive public ecosystem website. W1 does not by itself authorize production DNS/domain/hosting changes.
+W1 implements the four-route public ecosystem website as a review artifact. `robots.txt` prevents indexing and no production DNS/domain/hosting change is authorized by this milestone.

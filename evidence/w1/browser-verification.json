@@ -1,0 +1,261 @@
+{
+  "generatedAt": "2026-08-20T16:36:49.005Z",
+  "target": "local preview",
+  "browser": "chrome.exe",
+  "routes": 4,
+  "devices": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      }
+    },
+    {
+      "name": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "screenshots": 13,
+  "failures": [],
+  "results": [
+    {
+      "route": "/",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "title": "Proof — Own the path from idea to application",
+      "screenshot": "evidence/w1/home-desktop.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 4063
+    },
+    {
+      "route": "/ecosystem/",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "title": "The Proof ecosystem — Connected, not monolithic",
+      "screenshot": "evidence/w1/ecosystem-desktop.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3628
+    },
+    {
+      "route": "/products/",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "title": "Proof products — A modular ecosystem",
+      "screenshot": "evidence/w1/products-desktop.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3951
+    },
+    {
+      "route": "/principles/",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "title": "Proof principles — Ownership that stays practical",
+      "screenshot": "evidence/w1/principles-desktop.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 2606
+    },
+    {
+      "route": "/",
+      "device": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": 200,
+      "title": "Proof — Own the path from idea to application",
+      "screenshot": "evidence/w1/home-tablet.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 4044
+    },
+    {
+      "route": "/ecosystem/",
+      "device": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": 200,
+      "title": "The Proof ecosystem — Connected, not monolithic",
+      "screenshot": "evidence/w1/ecosystem-tablet.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3628
+    },
+    {
+      "route": "/products/",
+      "device": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": 200,
+      "title": "Proof products — A modular ecosystem",
+      "screenshot": "evidence/w1/products-tablet.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3951
+    },
+    {
+      "route": "/principles/",
+      "device": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": 200,
+      "title": "Proof principles — Ownership that stays practical",
+      "screenshot": "evidence/w1/principles-tablet.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 2606
+    },
+    {
+      "route": "/",
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "title": "Proof — Own the path from idea to application",
+      "screenshot": "evidence/w1/home-phone.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 4044
+    },
+    {
+      "route": "/ecosystem/",
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "title": "The Proof ecosystem — Connected, not monolithic",
+      "screenshot": "evidence/w1/ecosystem-phone.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3584
+    },
+    {
+      "route": "/products/",
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "title": "Proof products — A modular ecosystem",
+      "screenshot": "evidence/w1/products-phone.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 3951
+    },
+    {
+      "route": "/principles/",
+      "device": "phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "title": "Proof principles — Ownership that stays practical",
+      "screenshot": "evidence/w1/principles-phone.png",
+      "h1Count": 1,
+      "hasMain": true,
+      "hasPrimaryNav": true,
+      "hasFooter": true,
+      "hasForm": false,
+      "horizontalOverflow": false,
+      "duplicateIds": [],
+      "bodyTextLength": 2606
+    }
+  ]
+}
