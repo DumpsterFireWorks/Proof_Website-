@@ -29,22 +29,7 @@ Accepted finish line:
 
 Accepted finish line:
 
-A polished responsive public website implements:
-
-- `/` ecosystem-first home;
-- `/ecosystem` architecture story;
-- `/products` grouped Proof directory;
-- `/principles` owner-first architecture principles;
-- design derived from owner reference images;
-- public-safe content from `ECOSYSTEM_CONTENT_MAP.md`;
-- accessible ecosystem diagrams that work without color-only meaning;
-- SEO/share metadata, sitemap/robots as appropriate;
-- strong desktop, iPad/tablet, and phone behavior;
-- deterministic build/lint/type checks and browser verification;
-- exact-head GitHub Actions CI appropriate to the selected stack;
-- no backend/auth/database/CMS/analytics unless a separately approved need appears.
-
-W1 does **not** authorize production DNS/domain cutover, paid services, tracking/analytics, public admin features, accounts, or live infrastructure status.
+A polished responsive public website implements `/`, `/ecosystem`, `/products`, and `/principles` with public-safe content, accessibility, responsive behavior, deterministic verification, and no unnecessary backend/auth/analytics surface.
 
 ## W1.5 — Flagship visual system and Proof product-family integration
 
@@ -56,34 +41,36 @@ W1 does **not** authorize production DNS/domain cutover, paid services, tracking
 
 Accepted finish line:
 
-The accepted W1 artifact is now the flagship visual front door for the Proof ecosystem without changing its public-truth foundation.
-
-W1.5 establishes:
-
-- one recognizable Proof visual system across all four routes;
-- the owner-approved circular P/check + `PROOF` product-family language as the brand anchor;
-- the public brand as **PROOF** with **`poweredbyproof.com`** recorded as the future W2 production domain;
-- Proof Room G1+ design DNA: white-first canvas, navy/blue signal language, compact content-first chrome, restrained depth/motion, progressive disclosure, visible focus and touch quality;
-- Proof Infrastructure macro language: architecture lines/nodes, precise raised surfaces, large typography, generous white space, and engineered system storytelling;
-- a progressive `SOURCE → DEPLOY → CLOUD → CORE` flagship path with optional Base;
-- reusable Proof Stage product/application presentations;
-- deliberate `PLATFORM`, `OPERATIONS`, `APPLICATION`, and `CONCEPT` classification labels;
-- desktop, iPad/tablet, phone, and 404 exact-head browser evidence;
-- preserved W1 truth, accessibility, reduced-motion behavior, static delivery, and deterministic verification.
-
-W1.5 does **not** authorize production deployment, DNS/TLS changes, crawl/indexing activation, analytics, forms, accounts, payments, pricing, or changes to other Proof repositories.
+- one recognizable Proof product-family visual system across all four routes;
+- circular P/check + wide `PROOF` brand language;
+- white-first flagship composition with navy/electric-blue engineering signal language;
+- progressive SOURCE → DEPLOY → CLOUD → CORE story and optional Base;
+- Proof Stage treatment for product/application presentation;
+- explicit `PLATFORM`, `OPERATIONS`, `APPLICATION`, `CONCEPT` classifications;
+- desktop/iPad/phone/404 evidence and exact-head green CI;
+- no W2 hosting mutation included.
 
 ## W2 — Public hosting and domain activation
 
-**State:** PARKED
+**State:** ACTIVE  
+**Issue:** #8 — open  
+**Production domain:** `poweredbyproof.com`
 
-Potential finish line:
+Finish line:
 
-Publish the accepted flagship website artifact at **`poweredbyproof.com`** through a separately reviewed hosting/domain path with explicit owner authority.
+Publish the accepted flagship Website through **Cloudflare Workers Static Assets** at `https://poweredbyproof.com` with:
 
-Current owner preference is Cloudflare-based public hosting rather than exposing Proof Core, but W2 must still choose and prove the exact production path before any DNS/TLS/publication mutation.
+- production sourced only from accepted GitHub `main`;
+- Cloudflare-managed HTTPS/TLS;
+- Proof Core remaining private;
+- deliberate public crawl/indexing policy replacing the temporary review hold;
+- canonical/sitemap/404/static-routing behavior appropriate to production;
+- optional `www` → apex redirect where practical;
+- no analytics/tracking/cookies/forms/accounts/auth/payments introduced;
+- public verification of all four accepted routes and 404 behavior;
+- non-secret production configuration/evidence recorded in GitHub.
 
-The hosting choice should respect Proof’s owner-first direction and may later become a Proof Deploy/Cloud workload, but the public website must not depend on that path being ready.
+Feature/Codex branches may have previews when useful, but cannot replace production automatically. W2 must stop after production proof and Review-Control acceptance.
 
 ## W3 — Product detail / docs expansion
 
