@@ -21,10 +21,13 @@ Accepted finish line:
 
 ## W1 — Public Ecosystem Website V1
 
-**State:** ACTIVE / READY_FOR_CODEX  
-**Issue:** #3
+**State:** COMPLETE  
+**Issue:** #3 — closed  
+**PR:** #5 — merged  
+**Accepted head:** `b4a6fe0a7b22ea59096483c26e46123b3b141926`  
+**Squash merge:** `636f3dafe3e1ad88e2c72f21f3fe7f3b99b0b08f`
 
-Finish line:
+Accepted finish line:
 
 A polished responsive public website implements:
 
@@ -43,15 +46,43 @@ A polished responsive public website implements:
 
 W1 does **not** authorize production DNS/domain cutover, paid services, tracking/analytics, public admin features, accounts, or live infrastructure status.
 
+## W1.5 — Flagship visual system and Proof product-family integration
+
+**State:** ACTIVE / READY_FOR_CODEX  
+**Issue:** #6  
+**PR:** none
+
+Finish line:
+
+Elevate the accepted W1 artifact into the flagship visual front door for the Proof ecosystem without changing its public-truth foundation.
+
+The gate must:
+
+- establish one recognizable Proof visual system across all four routes;
+- use the owner-approved circular P/check + `PROOF` product-family language as the brand anchor;
+- preserve the public brand as **PROOF** while recording **`poweredbyproof.com`** as the chosen public domain for future W2 activation;
+- borrow transferable Proof Room G1+ design DNA: white-first canvas, navy/blue signal language, compact content-first chrome, restrained depth/motion, progressive disclosure, visible focus and touch quality;
+- borrow owner Proof Infrastructure macro language: architecture lines/nodes, precise raised surfaces, large typography, generous white space, and engineered system storytelling;
+- strengthen the homepage hero and progressive ecosystem explanation without fabricating architecture or product capability;
+- refine product showcases so Platform / Operations / Application / Concept groupings feel like one engineered family;
+- preserve accessibility, reduced-motion behavior, performance, static delivery, and deterministic verification;
+- prove desktop, iPad/tablet, phone, and 404 behavior on the exact implementation head.
+
+Full scope, preserve rules, out-of-scope boundaries, and acceptance evidence live in Issue #6 and `CURRENT.md`.
+
+W1.5 does **not** authorize production deployment, DNS/TLS changes, crawl/indexing activation, analytics, forms, accounts, payments, pricing, or changes to other Proof repositories.
+
 ## W2 — Public hosting and domain activation
 
 **State:** PARKED
 
 Potential finish line:
 
-Publish the accepted W1 artifact through a separately reviewed hosting/domain path with explicit owner authority.
+Publish the accepted flagship website artifact at **`poweredbyproof.com`** through a separately reviewed hosting/domain path with explicit owner authority.
 
-The hosting choice should respect Proof’s owner-first direction and may later become a Proof Deploy/Cloud workload, but W1 must not depend on that path being ready.
+Current owner preference is Cloudflare-based public hosting rather than exposing Proof Core, but W2 must still choose and prove the exact production path before any DNS/TLS/publication mutation.
+
+The hosting choice should respect Proof’s owner-first direction and may later become a Proof Deploy/Cloud workload, but the public website must not depend on that path being ready.
 
 ## W3 — Product detail / docs expansion
 
