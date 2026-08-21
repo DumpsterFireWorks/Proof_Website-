@@ -8,7 +8,7 @@ Read in this order:
 
 1. `PROJECT_SCOPE.md`
 2. `CURRENT.md`
-3. active issue / PR / exact head
+3. active issue / PR / exact head when one exists
 4. `ECOSYSTEM_CONTENT_MAP.md`
 5. `SITE_INFORMATION_ARCHITECTURE.md`
 6. `REFERENCE_IMAGES.md`
@@ -36,10 +36,14 @@ Never copy internal technical detail into public content merely because it exist
 
 The five original PNGs committed by the owner remain preserved visual references and must not be deleted or altered.
 
-For W1.5, Issue `#6` additionally locks the current owner-approved Proof product-family direction: circular P/check master mark, navy + electric blue, wide squared `PROOF` wordmark, subordinate blue product names, Proof Room G1+ transferable UI DNA, and the Proof Infrastructure macro architecture/engineering visual language.
+The accepted W1.5 visual system now locks the current owner-approved Proof product-family direction: circular P/check master mark, navy + electric blue, wide squared `PROOF` wordmark, subordinate blue product names, Proof Room G1+ transferable UI DNA, and the Proof Infrastructure macro architecture/engineering visual language.
 
 When exact product-mark reference is useful, the accepted Proof Room repository contains its canonical owner-approved Room brand asset. Reuse the family language; do not invent unrelated generic SaaS iconography.
 
 ## Current command
 
-Follow `CURRENT.md` and the active issue exactly. The current gate is W1.5 flagship visual polish. It authorizes one bounded implementation PR only and does **not** authorize W2 public hosting, DNS/TLS/domain mutation, crawl/indexing activation, analytics, forms, accounts, payments, or changes to other Proof repositories.
+Follow `CURRENT.md` exactly.
+
+There is currently **no active Website Codex gate**. W1.5 is accepted and merged. Do not send generic `CONTINUE` until Review-Control explicitly promotes another bounded gate.
+
+W2 public hosting/domain activation remains parked. No Cloudflare deployment, DNS/TLS/domain mutation, crawl/indexing activation, analytics, forms, accounts, payments, or changes to other Proof repositories are authorized merely because W1.5 is complete.
