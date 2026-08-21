@@ -1,6 +1,6 @@
 # Current — Proof Website
 
-**Status:** `W1.5 COMPLETE — WEBSITE HOLD`
+**Status:** `W2 ACTIVE — CLOUDFLARE PRODUCTION LAUNCH`
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`
 
@@ -13,8 +13,6 @@
 - accepted head `7537387c59bebf79a08acb2082d5c87828e72ab0`
 - squash merge `1fd4804a0801c2790706f377c340609be31e911b`
 
-W0 locked the public-safe ecosystem content map, four-route information architecture, product grouping, owner-reference preservation rules, and website operating/audit/quality boundaries.
-
 ### W1 — COMPLETE
 
 **Gate:** `W1 — Public Proof Ecosystem Website V1`  
@@ -23,15 +21,6 @@ W0 locked the public-safe ecosystem content map, four-route information architec
 **Accepted head:** `b4a6fe0a7b22ea59096483c26e46123b3b141926`  
 **Squash merge:** `636f3dafe3e1ad88e2c72f21f3fe7f3b99b0b08f`  
 **Review-Control:** `PASS`
-
-Accepted W1 provides the public four-route site:
-
-- `/`
-- `/ecosystem`
-- `/products`
-- `/principles`
-
-The bounded Review-Control wording repair is included: current Proof Control / Proof Cloud App presentation is read-only and future governed actions are explicitly deferred.
 
 ### W1.5 — COMPLETE
 
@@ -48,41 +37,53 @@ Accepted W1.5 establishes the flagship Proof presentation while preserving W1 pu
 - white-first flagship composition with deep Proof navy and electric blue signal treatment;
 - progressive `SOURCE → DEPLOY → CLOUD → CORE` homepage story;
 - Proof Base presented as optional structured data capability;
-- Proof Stage product/application presentation across the accepted routes;
-- explicit `PLATFORM`, `OPERATIONS`, `APPLICATION`, and `CONCEPT` classification labels;
-- desktop `1440×1000`, iPad/tablet `834×1112`, phone `390×844`, and 404 browser evidence;
-- reduced-motion behavior, visible focus, touch-target checks, no horizontal overflow, no forms, and no external runtime requests.
+- Proof Stage product/application presentation;
+- explicit `PLATFORM`, `OPERATIONS`, `APPLICATION`, and `CONCEPT` classifications;
+- desktop, iPad/tablet, phone, and 404 browser evidence;
+- reduced-motion, focus, touch-target, overflow, form, and external-request checks.
 
 Exact-head GitHub Actions run `32517401117` completed successfully. All five original owner reference PNGs remain preserved unchanged.
 
-## Locked owner decisions
+## Active gate — W2
 
-- The public flagship domain is **`poweredbyproof.com`**.
-- The public brand remains **PROOF**; the domain is not a replacement product name or logo.
-- Current owner preference for future public hosting is Cloudflare-based rather than exposing Proof Core.
-- Production hosting/domain/DNS/TLS/indexing remain a separate W2 decision and proof.
+**Gate:** `W2 — Cloudflare production hosting and poweredbyproof.com activation`  
+**Issue:** `#8 — OPEN`  
+**State:** `ACTIVE / CONNECTION + PRODUCTION PREP`  
+**Production domain:** `poweredbyproof.com`
 
-## Current hold
+## Locked W2 decisions
 
-There is **no active Website Codex gate**.
+- Production hosting path: **Cloudflare Workers Static Assets**.
+- Production source: **accepted GitHub `main` only**.
+- Public canonical hostname: **`https://poweredbyproof.com`**.
+- Prefer `www.poweredbyproof.com` → apex redirect if practical.
+- Cloudflare-managed HTTPS/TLS.
+- Proof Core remains private and is not the Website public origin.
+- Cloudflare preview deployments may assist review but cannot become production authority.
+- GitHub remains source of truth and the Website must remain portable away from Cloudflare.
+- Successful W2 public launch authorizes replacing the temporary `robots.txt` crawl hold with normal public indexing.
+- No analytics, tracking, cookies, forms, accounts, auth, payments, pricing, or commercialization work enters W2.
 
-Do not send generic `CONTINUE` until Review-Control explicitly promotes another bounded website gate.
+## Required sequence
 
-W1.5 acceptance does **not** authorize:
+1. Connect/authorize the owner Cloudflare account through the supported OAuth/plugin path.
+2. If production-prep source changes are required, Codex creates one bounded W2 branch/draft PR from current `main` for only canonical/robots/sitemap/static-hosting compatibility work.
+3. Review-Control audits and merges that exact prep head before production uses it.
+4. Configure the Cloudflare Worker/static-assets project and production source policy.
+5. Bind `poweredbyproof.com`, DNS, and HTTPS without changing unrelated zone records.
+6. Verify the public site on `/`, `/ecosystem/`, `/products/`, `/principles/`, and 404 behavior at desktop/tablet/phone.
+7. Record non-secret production configuration/evidence in GitHub and mark W2 complete.
 
-- Cloudflare Workers or any other production deployment;
-- DNS, TLS, or domain cutover;
-- changing `robots.txt` to permit indexing;
-- analytics/tracking/cookies;
-- forms, accounts, auth, payments, pricing, or sales/waitlist claims;
-- backend/API/database work;
-- changes to other Proof repositories;
-- W3 product-detail/docs expansion.
+## Authorized external mutations
+
+Issue `#8` explicitly authorizes only the Cloudflare mutations necessary for this Website launch: supported account connection, Website Worker/static-assets project, intended domain/DNS/TLS binding, GitHub-backed production deployment from `main` when available, and optional `www` → apex redirect.
+
+Do not modify unrelated Cloudflare zones/projects, email routing, Proof product repositories, private infrastructure, or W3 scope.
 
 ## Next valid action
 
-`OWNER / REVIEW-CONTROL DECISION — promote W2 public hosting and domain activation only when ready to perform and review production publication.`
+`CONNECT CLOUDFLARE FOR W2; THEN PERFORM ONLY ISSUE #8 PRODUCTION PREP / HOSTING / DOMAIN PROOF.`
 
-## Hard rule
+## Stop condition
 
-The accepted flagship artifact is ready for a future hosting gate, but a successful build or merge does not itself authorize public deployment.
+After `https://poweredbyproof.com` is proven against the accepted production source, stop for Review-Control acceptance. Do not begin W3 automatically.
