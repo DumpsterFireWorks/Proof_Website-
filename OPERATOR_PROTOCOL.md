@@ -39,8 +39,10 @@ A public statement must have a durable source in the canonical Proof repos or an
 
 When product docs conflict, do not average them together. Prefer current accepted state and note the conflict for Review-Control.
 
-## Current W0 rule
+## Gate rule
 
-W0 is bootstrap/research only. It does not authorize site implementation or public hosting.
+`CURRENT.md` and the active issue define the only implementation authority. A completed prior gate does not authorize the next one automatically.
 
-After W0 acceptance, Review-Control may promote W1 from the already-approved owner direction to build the V1 website.
+Brand/visual implementation may refine presentation inside owner-approved direction, but it must not silently change product truth, hierarchy, availability, architecture, or commercialization claims.
+
+A successful build or review does not authorize production hosting, DNS/TLS changes, crawl/indexing activation, analytics, data collection, or public release unless `CURRENT.md` explicitly promotes a bounded gate for that work.
