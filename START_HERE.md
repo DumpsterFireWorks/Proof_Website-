@@ -8,7 +8,7 @@ Read in this order:
 
 1. `PROJECT_SCOPE.md`
 2. `CURRENT.md`
-3. active issue / PR / exact head when one exists
+3. active issue / PR / exact head
 4. `ECOSYSTEM_CONTENT_MAP.md`
 5. `SITE_INFORMATION_ARCHITECTURE.md`
 6. `REFERENCE_IMAGES.md`
@@ -32,18 +32,27 @@ When source documents disagree, do not silently choose the more exciting claim. 
 
 Never copy internal technical detail into public content merely because it exists in GitHub. Follow the public-safe boundary in `PROJECT_SCOPE.md` and `ECOSYSTEM_CONTENT_MAP.md`.
 
-## Reference-image rule
+## Accepted visual foundation
 
-The five original PNGs committed by the owner remain preserved visual references and must not be deleted or altered.
+W1.5 is complete and accepted. The five original owner PNGs remain preserved visual references, and the accepted flagship implementation uses the owner-approved Proof family language: circular P/check master mark, navy + electric blue, wide `PROOF` wordmark, subordinate product names, Proof Room transferable UI DNA, and Proof Infrastructure macro engineering/architecture language.
 
-The accepted W1.5 visual system now locks the current owner-approved Proof product-family direction: circular P/check master mark, navy + electric blue, wide squared `PROOF` wordmark, subordinate blue product names, Proof Room G1+ transferable UI DNA, and the Proof Infrastructure macro architecture/engineering visual language.
-
-When exact product-mark reference is useful, the accepted Proof Room repository contains its canonical owner-approved Room brand asset. Reuse the family language; do not invent unrelated generic SaaS iconography.
+Do not redesign W1.5 during W2 except for the smallest source changes required for correct production hosting/canonical/indexing behavior.
 
 ## Current command
 
-Follow `CURRENT.md` exactly.
+Follow `CURRENT.md` and Issue `#8` exactly.
 
-There is currently **no active Website Codex gate**. W1.5 is accepted and merged. Do not send generic `CONTINUE` until Review-Control explicitly promotes another bounded gate.
+The active gate is **W2 — Cloudflare production hosting and poweredbyproof.com activation**.
 
-W2 public hosting/domain activation remains parked. No Cloudflare deployment, DNS/TLS/domain mutation, crawl/indexing activation, analytics, forms, accounts, payments, or changes to other Proof repositories are authorized merely because W1.5 is complete.
+W2 authorizes only the production-launch path recorded in Issue #8:
+
+- Cloudflare Workers Static Assets;
+- accepted GitHub `main` as production source;
+- `https://poweredbyproof.com` as canonical public hostname;
+- Cloudflare HTTPS/TLS and intended Website DNS binding;
+- public crawl/indexing activation at accepted launch;
+- production smoke/evidence recording.
+
+W2 does **not** authorize analytics/tracking/cookies, forms, accounts/auth, payments/pricing, email-routing changes, unrelated Cloudflare zone/project mutations, Proof Core exposure, changes to other Proof repositories, or W3 expansion.
+
+Stop after W2 production proof and Review-Control acceptance. Do not automatically begin W3.
