@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T18:20:01.653Z",
+  "generatedAt": "2026-08-21T19:12:30.907Z",
   "target": "local preview",
   "browser": "chrome.exe",
   "routes": 4,
@@ -91,7 +91,7 @@
       "proofMarkCount": 13,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 4168,
+      "bodyTextLength": 4174,
       "reducedMotion": true,
       "minimumPrimaryTarget": 84
     },
@@ -179,7 +179,7 @@
       "proofMarkCount": 13,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 4168,
+      "bodyTextLength": 4174,
       "reducedMotion": true,
       "minimumPrimaryTarget": 84
     },
@@ -267,7 +267,7 @@
       "proofMarkCount": 13,
       "horizontalOverflow": false,
       "duplicateIds": [],
-      "bodyTextLength": 4168,
+      "bodyTextLength": 4174,
       "reducedMotion": true,
       "minimumPrimaryTarget": 54
     },

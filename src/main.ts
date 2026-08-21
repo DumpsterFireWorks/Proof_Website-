@@ -82,6 +82,16 @@ function categoryIcon(category: ProductCategory): string {
   return `<span class="category-index" aria-hidden="true">${icons[category]}</span>`;
 }
 
+function productClassification(category: ProductCategory): string {
+  const labels: Record<ProductCategory, string> = {
+    Platform: "PLATFORM",
+    Operations: "OPERATIONS",
+    Applications: "APPLICATION",
+    Concepts: "CONCEPT"
+  };
+  return labels[category];
+}
+
 function homePage(): string {
   return `
     <main id="main-content">
@@ -318,7 +328,7 @@ function productGroup(group: ProductCategory): string {
 }
 
 function productCard(product: Product): string {
-  return `<article class="product-card proof-stage-card${product.status ? " product-card--concept" : ""}"><div class="proof-stage-card__visual"><span class="stage-classification">${product.category === "Concepts" ? "CONCEPT" : product.category.slice(0, -1).toUpperCase()}</span>${productLockup(product.name)}<div class="stage-line" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="proof-stage-card__body"><div class="product-card__heading"><div><span>${product.category}</span><h3>${product.name}</h3></div>${product.status ? `<strong>${product.status}</strong>` : ""}</div><p class="product-subtitle">${product.subtitle}</p><p>${product.description}</p><ul>${product.capabilities.map((capability) => `<li>${capability}</li>`).join("")}</ul>${product.status ? `<div class="concept-note">Preserved exploration · Not an available product</div>` : ""}</div></article>`;
+  return `<article class="product-card proof-stage-card${product.status ? " product-card--concept" : ""}"><div class="proof-stage-card__visual"><span class="stage-classification">${productClassification(product.category)}</span>${productLockup(product.name)}<div class="stage-line" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="proof-stage-card__body"><div class="product-card__heading"><div><span>${product.category}</span><h3>${product.name}</h3></div>${product.status ? `<strong>${product.status}</strong>` : ""}</div><p class="product-subtitle">${product.subtitle}</p><p>${product.description}</p><ul>${product.capabilities.map((capability) => `<li>${capability}</li>`).join("")}</ul>${product.status ? `<div class="concept-note">Preserved exploration · Not an available product</div>` : ""}</div></article>`;
 }
 
 function principlesPage(): string {
