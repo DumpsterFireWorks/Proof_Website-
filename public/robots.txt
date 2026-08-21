@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# W1 is a review artifact. Indexing remains disabled until a separately approved public-hosting gate.
