@@ -1,81 +1,50 @@
 # Current — Proof Website
 
-**Status:** `ACTIVE — W1 PUBLIC PROOF ECOSYSTEM WEBSITE V1`
+**Status:** `W1 COMPLETE — WEBSITE HOLD`
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`
 
-## Accepted W0 foundation
+## Accepted foundation
 
-**Gate:** `W0 — Proof ecosystem research and public website foundation`  
-**Issue:** `#1 — CLOSED COMPLETE`  
-**PR:** `#2 — MERGED`  
-**Accepted head:** `7537387c59bebf79a08acb2082d5c87828e72ab0`  
-**Squash merge:** `1fd4804a0801c2790706f377c340609be31e911b`
+### W0 — COMPLETE
 
-W0 locked:
+- Issue `#1` — CLOSED COMPLETE
+- PR `#2` — MERGED
+- accepted head `7537387c59bebf79a08acb2082d5c87828e72ab0`
+- squash merge `1fd4804a0801c2790706f377c340609be31e911b`
 
-- researched canonical Proof product sources;
-- public-safe ecosystem content map;
-- platform / operations / applications / concepts grouping;
-- V1 four-route information architecture;
-- owner reference-image preservation/inspection rules;
-- website operating, audit, and quality boundaries.
+W0 locked the public-safe ecosystem content map, four-route information architecture, product grouping, owner-reference preservation rules, and website operating/audit/quality boundaries.
 
-## Active gate — W1
+### W1 — COMPLETE
 
 **Gate:** `W1 — Public Proof Ecosystem Website V1`  
-**Issue:** `#3 — OPEN`  
-**State:** `READY_FOR_CODEX`
+**Issue:** `#3 — CLOSED COMPLETE`  
+**PR:** `#5 — MERGED`  
+**Accepted head:** `b4a6fe0a7b22ea59096483c26e46123b3b141926`  
+**Squash merge:** `636f3dafe3e1ad88e2c72f21f3fe7f3b99b0b08f`  
+**Review-Control:** `PASS`
 
-## W1 required result
+Accepted W1 provides the public four-route site:
 
-Build a polished responsive public site implementing:
+- `/`
+- `/ecosystem`
+- `/products`
+- `/principles`
 
-- `/` — ecosystem-first home;
-- `/ecosystem` — modular architecture story;
-- `/products` — grouped Proof product/application directory;
-- `/principles` — owner-first architecture principles.
+The bounded Review-Control wording repair is included: current Proof Control / Proof Cloud App presentation is read-only and future governed actions are explicitly deferred.
 
-Codex must inspect all five owner reference PNGs locally before choosing the visual system and preserve the originals unchanged.
+Exact-head GitHub Actions run `32424389128` completed successfully. Browser evidence covers desktop, tablet/iPad, phone, and 404 behavior. All five owner reference PNGs remain preserved unchanged. No backend, auth, analytics, tracking, forms, cookies, or live operator controls were introduced.
 
-## Locked public grouping
+## Current hold
 
-- **Platform:** Deploy, Cloud, Core, Base
-- **Operations:** Control, Cloud App
-- **Applications:** Quote, Flow, Room
-- **Concepts:** OS
-- **Architecture/principles source:** Proof Infrastructure
+There is **no active Website Codex gate**.
 
-## Truth / public-safety rules
+Do not send generic `CONTINUE` until Review-Control explicitly promotes another bounded website gate.
 
-- `ECOSYSTEM_CONTENT_MAP.md` is the W1 copy/content contract.
-- Product repos remain product truth; Proof Infrastructure remains cross-product architecture truth.
-- Current accepted state beats stale historical scope text.
-- No private infrastructure/security/repository evidence in public output.
-- Do not represent Base/OS/unimplemented capabilities as available.
-- Do not conflate Proof Control with Proof Cloud App or the future authority/control-plane concept.
-
-## Hard boundaries
-
-W1 does **not** authorize:
-
-- public hosting/domain/DNS/provider changes;
-- Proof Deploy/Cloud/Core/Base/Control mutation;
-- paid services;
-- analytics/tracking/cookies;
-- forms/private-data collection;
-- accounts/auth;
-- public admin/live status controls;
-- commercialization/pricing/SLA claims.
-
-## Codex authorization
-
-**Proof Website Codex → `CONTINUE` means Issue #3 / W1 only.**
-
-Use one focused **DRAFT PR**. Run deterministic checks, production build, route/browser verification, and desktop/tablet/phone evidence. Include a concise summary of how the owner visual references informed the final design.
-
-Stop `AWAITING_REVIEW`.
+Production hosting/domain/DNS/provider activation remains separate future work. W1 acceptance does not authorize Cloudflare, domain purchase/configuration, analytics, data collection, or changes to any Proof product repository.
 
 ## Next valid action
 
-**Proof Website Codex → `CONTINUE`.**
+`OWNER / REVIEW-CONTROL DECISION — promote the smallest next website gate only when useful.`
+
+A future public-hosting/domain gate must be defined separately from W1 and should use the current Proof domain decision at that time rather than assuming an old temporary infrastructure hostname.
