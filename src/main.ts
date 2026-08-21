@@ -18,11 +18,17 @@ const routes: Array<{ href: string; label: string; page: Page }> = [
 ];
 
 const proofMark = `
-  <span class="proof-mark" aria-hidden="true">
-    <span class="proof-mark__letter">P</span>
-    <span class="proof-mark__check"></span>
-  </span>
+  <svg class="proof-mark" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
+    <circle class="proof-mark__ring" cx="36" cy="36" r="28" pathLength="100"></circle>
+    <path class="proof-mark__signal" d="M15 54A28 28 0 0 1 15 18"></path>
+    <path class="proof-mark__letter" d="M27 57V27h17c8 0 13 5 13 12s-5 12-13 12H34V34h10c3 0 5 2 5 5s-2 5-5 5"></path>
+    <path class="proof-mark__check" d="m38 39 6 6 13-15"></path>
+  </svg>
 `;
+
+function productLockup(productName?: string, compact = false): string {
+  return `<span class="product-lockup${compact ? " product-lockup--compact" : ""}">${proofMark}<span class="product-lockup__type"><b>PROOF</b>${productName ? `<small>${productName.replace("Proof ", "").toUpperCase()}</small>` : ""}</span></span>`;
+}
 
 function header(): string {
   const links = routes
@@ -37,8 +43,7 @@ function header(): string {
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="/" aria-label="Proof home">
-          ${proofMark}
-          <span class="brand-word">PROOF</span>
+          ${productLockup(undefined, true)}
         </a>
         <nav class="primary-nav" aria-label="Primary navigation">${links}</nav>
       </div>
@@ -51,7 +56,7 @@ function footer(): string {
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <a class="brand brand--footer" href="/" aria-label="Proof home">${proofMark}<span class="brand-word">PROOF</span></a>
+          <a class="brand brand--footer" href="/" aria-label="Proof home">${productLockup(undefined, true)}</a>
           <p>One connected ecosystem. Separate responsibilities. Ownership that lasts.</p>
         </div>
         <nav aria-label="Footer navigation">
@@ -80,11 +85,11 @@ function categoryIcon(category: ProductCategory): string {
 function homePage(): string {
   return `
     <main id="main-content">
-      <section class="hero hero--home">
+      <section class="hero hero--home flagship-hero">
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="shell hero-layout">
           <div class="hero-copy">
-            <p class="eyebrow eyebrow--light"><span></span>An owner-first software ecosystem</p>
+            <p class="eyebrow"><span></span>An owner-first software ecosystem</p>
             <h1>Own the path from idea to application.</h1>
             <p class="hero-lede">Proof connects the work of building, deploying, running, and understanding applications—without turning ownership into a promise from one more provider.</p>
             <div class="button-row">
@@ -97,18 +102,22 @@ function homePage(): string {
               <li><span aria-hidden="true">✓</span> Evidence-driven</li>
             </ul>
           </div>
-          <div class="hero-system" aria-label="A source moves through a proven release into an owned runtime">
-            <div class="system-label">THE OWNED APPLICATION PATH</div>
-            <ol class="signal-path">
-              <li><span class="signal-node">01</span><div><strong>Your source</strong><small>Exact and inspectable</small></div></li>
-              <li><span class="signal-node">02</span><div><strong>Proven release</strong><small>Built once, identity intact</small></div></li>
-              <li><span class="signal-node">03</span><div><strong>Owned runtime</strong><small>Healthy, recoverable, yours</small></div></li>
+          <div class="hero-system proof-stage proof-stage--hero" aria-label="Source moves through Proof Deploy and Proof Cloud to Proof Core; Proof Base attaches only when structured data is needed">
+            <div class="stage-grid" aria-hidden="true"></div>
+            <div class="system-label">THE OWNED APPLICATION PATH <span>01—04</span></div>
+            <div class="hero-master-mark">${productLockup()}</div>
+            <ol class="signal-path signal-path--flagship">
+              <li><span class="signal-node">01</span><div><strong>Source</strong><small>Exact and inspectable</small></div></li>
+              <li><span class="signal-node">02</span><div><strong>Deploy</strong><small>Proven release</small></div></li>
+              <li><span class="signal-node">03</span><div><strong>Cloud</strong><small>Owned runtime</small></div></li>
+              <li><span class="signal-node">04</span><div><strong>Core</strong><small>Compute foundation</small></div></li>
             </ol>
-            <div class="system-orbit system-orbit--one"><span>Operate</span></div>
-            <div class="system-orbit system-orbit--two"><span>Understand</span></div>
+            <div class="optional-signal"><span>OPTIONAL</span><b>Base</b><small>Structured data when needed</small></div>
+            <div class="system-orbit system-orbit--one"><span>Observe</span></div>
+            <div class="system-orbit system-orbit--two"><span>Operate</span></div>
           </div>
         </div>
-        <div class="hero-trust shell"><span>PROOF</span><p>Integrated relationships.<br />Separated authority.</p></div>
+        <div class="hero-trust shell"><span>POWEREDBYPROOF.COM</span><p>Public flagship home.<br />The brand remains Proof.</p></div>
       </section>
 
       <section class="section section--problem">
@@ -206,11 +215,11 @@ function homePage(): string {
 }
 
 function summaryCard(product: Product): string {
-  return `<article class="summary-card"><div class="card-top"><span>${product.category}</span><b aria-hidden="true">${String(products.indexOf(product) + 1).padStart(2, "0")}</b></div><h3>${product.name.replace("Proof ", "")}</h3><p>${product.description}</p><small>${product.subtitle}</small></article>`;
+  return `<article class="summary-card proof-family-card"><div class="card-top"><span>${product.category}</span><b aria-hidden="true">${String(products.indexOf(product) + 1).padStart(2, "0")}</b></div>${productLockup(product.name, true)}<p>${product.description}</p><small>${product.subtitle}</small></article>`;
 }
 
 function practiceCard(name: string, category: string, headline: string, layers: string[], note: string): string {
-  return `<article class="practice-card"><div class="practice-card__top"><span>PROOF ${name.toUpperCase()}</span><small>${category}</small></div><h3>${headline}</h3><div class="layer-list">${layers.map((layer) => `<span>${layer}</span>`).join("")}</div><p>${note}</p></article>`;
+  return `<article class="practice-card proof-stage-card"><div class="proof-stage-card__visual"><span class="stage-classification">APPLICATION</span>${productLockup(`Proof ${name}`)}<div class="stage-line" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="proof-stage-card__body"><div class="practice-card__top"><span>${headline}</span><small>${category}</small></div><div class="layer-list">${layers.map((layer) => `<span>${layer}</span>`).join("")}</div><p>${note}</p></div></article>`;
 }
 
 function ecosystemPage(): string {
@@ -309,7 +318,7 @@ function productGroup(group: ProductCategory): string {
 }
 
 function productCard(product: Product): string {
-  return `<article class="product-card${product.status ? " product-card--concept" : ""}"><div class="product-card__heading"><div><span>${product.category}</span><h3>${product.name}</h3></div>${product.status ? `<strong>${product.status}</strong>` : ""}</div><p class="product-subtitle">${product.subtitle}</p><p>${product.description}</p><ul>${product.capabilities.map((capability) => `<li>${capability}</li>`).join("")}</ul>${product.status ? `<div class="concept-note">Preserved exploration · Not an available product</div>` : ""}</article>`;
+  return `<article class="product-card proof-stage-card${product.status ? " product-card--concept" : ""}"><div class="proof-stage-card__visual"><span class="stage-classification">${product.category === "Concepts" ? "CONCEPT" : product.category.slice(0, -1).toUpperCase()}</span>${productLockup(product.name)}<div class="stage-line" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="proof-stage-card__body"><div class="product-card__heading"><div><span>${product.category}</span><h3>${product.name}</h3></div>${product.status ? `<strong>${product.status}</strong>` : ""}</div><p class="product-subtitle">${product.subtitle}</p><p>${product.description}</p><ul>${product.capabilities.map((capability) => `<li>${capability}</li>`).join("")}</ul>${product.status ? `<div class="concept-note">Preserved exploration · Not an available product</div>` : ""}</div></article>`;
 }
 
 function principlesPage(): string {
@@ -327,17 +336,17 @@ function principlesPage(): string {
       <section class="principle-intro"><div class="shell"><blockquote>“Infrastructure exists to serve real applications—not the other way around.”</blockquote><p>The architecture is not a purity test. It is a set of decisions that keeps the owner’s ability to understand, recover, change, and operate the system in view.</p></div></section>
       <section class="section"><div class="shell principle-list">${principles.map((principle, index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><div><p>${principle[0]}</p><h2>${principle[1]}</h2><p>${principle[2]}</p></div></article>`).join("")}</div></section>
       <section class="decision-test"><div class="shell"><div><p class="eyebrow eyebrow--light"><span></span>A practical decision test</p><h2>Does this choice help the owner?</h2></div><ol><li><span>01</span>Does it solve a real application problem?</li><li><span>02</span>Can the owner understand its responsibility?</li><li><span>03</span>Can source and data be recovered or moved?</li><li><span>04</span>Is the claimed state backed by evidence?</li><li><span>05</span>Is this layer actually necessary?</li></ol></div></section>
-      <section class="section"><div class="shell closing-cta"><div>${proofMark}</div><h2>One coherent ecosystem.<br />No mandatory monolith.</h2><p>See how these principles become explicit responsibilities across Proof Deploy, Cloud, Core, Base, Control, Cloud App, and real applications.</p><a class="button button--dark" href="/ecosystem/">Explore the ecosystem ${arrowIcon()}</a></div></section>
+      <section class="section"><div class="shell closing-cta"><div>${productLockup()}</div><h2>One coherent ecosystem.<br />No mandatory monolith.</h2><p>See how these principles become explicit responsibilities across Proof Deploy, Cloud, Core, Base, Control, Cloud App, and real applications.</p><a class="button button--dark" href="/ecosystem/">Explore the ecosystem ${arrowIcon()}</a></div></section>
     </main>
   `;
 }
 
 function pageHero(kicker: string, title: string, copy: string, stat: string): string {
-  return `<section class="page-hero"><div class="hero-grid" aria-hidden="true"></div><div class="shell"><div><p class="eyebrow eyebrow--light"><span></span>${kicker}</p><h1>${title}</h1><p>${copy}</p></div><div class="page-hero__stat"><span>PROOF SYSTEM</span><b>${stat}</b><small>Connected relationships · Explicit boundaries</small></div></div></section>`;
+  return `<section class="page-hero"><div class="hero-grid" aria-hidden="true"></div><div class="shell"><div><p class="eyebrow"><span></span>${kicker}</p><h1>${title}</h1><p>${copy}</p></div><div class="page-hero__stat proof-stage"><span>PROOF SYSTEM</span>${productLockup(kicker === "Products" ? "Proof Family" : undefined)}<b>${stat}</b><small>Connected relationships · Explicit boundaries</small></div></div></section>`;
 }
 
 function notFoundPage(): string {
-  return `<main id="main-content" class="not-found"><div class="shell"><div class="not-found__code">404</div><p class="eyebrow"><span></span>Outside the map</p><h1>This Proof page does not exist.</h1><p>The public site has four routes. Return home or continue with the ecosystem overview.</p><div class="button-row"><a class="button button--dark" href="/">Return home</a><a class="button button--outline" href="/ecosystem/">Explore the ecosystem</a></div></div></main>`;
+  return `<main id="main-content" class="not-found"><div class="not-found-grid" aria-hidden="true"></div><div class="shell"><div class="not-found-mark">${productLockup()}</div><div class="not-found__code">404</div><p class="eyebrow"><span></span>Outside the map</p><h1>This Proof page does not exist.</h1><p>The public site has four routes. Return home or continue with the ecosystem overview.</p><div class="button-row"><a class="button button--dark" href="/">Return home</a><a class="button button--outline" href="/ecosystem/">Explore the ecosystem</a></div></div></main>`;
 }
 
 const pages: Record<Page, () => string> = {
