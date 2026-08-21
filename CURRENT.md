@@ -1,6 +1,6 @@
 # Current — Proof Website
 
-**Status:** `W1.5 ACTIVE — READY_FOR_CODEX`
+**Status:** `W1.5 COMPLETE — WEBSITE HOLD`
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`
 
@@ -33,60 +33,56 @@ Accepted W1 provides the public four-route site:
 
 The bounded Review-Control wording repair is included: current Proof Control / Proof Cloud App presentation is read-only and future governed actions are explicitly deferred.
 
-Exact-head GitHub Actions run `32424389128` completed successfully. Browser evidence covers desktop, tablet/iPad, phone, and 404 behavior. All five original owner reference PNGs remain preserved unchanged. No backend, auth, analytics, tracking, forms, cookies, or live operator controls were introduced.
-
-## Active gate
+### W1.5 — COMPLETE
 
 **Gate:** `W1.5 — Flagship visual system and Proof product-family integration`  
-**Issue:** `#6`  
-**PR:** `none`  
-**State:** `READY_FOR_CODEX`
+**Issue:** `#6 — CLOSED COMPLETE`  
+**PR:** `#7 — MERGED`  
+**Accepted head:** `86bc5bea427877fb110b3154e36f4d1c878ab988`  
+**Squash merge:** `78ce2330b39dab909d0cbfc1104119b0b8a4c83a`  
+**Review-Control:** `PASS`
 
-## Owner decisions now locked
+Accepted W1.5 establishes the flagship Proof presentation while preserving W1 public truth:
 
-- The accepted W1 site is the factual/content foundation, but not the final public visual ceiling.
+- owner-approved circular P/check + wide `PROOF` product-family language;
+- white-first flagship composition with deep Proof navy and electric blue signal treatment;
+- progressive `SOURCE → DEPLOY → CLOUD → CORE` homepage story;
+- Proof Base presented as optional structured data capability;
+- Proof Stage product/application presentation across the accepted routes;
+- explicit `PLATFORM`, `OPERATIONS`, `APPLICATION`, and `CONCEPT` classification labels;
+- desktop `1440×1000`, iPad/tablet `834×1112`, phone `390×844`, and 404 browser evidence;
+- reduced-motion behavior, visible focus, touch-target checks, no horizontal overflow, no forms, and no external runtime requests.
+
+Exact-head GitHub Actions run `32517401117` completed successfully. All five original owner reference PNGs remain preserved unchanged.
+
+## Locked owner decisions
+
 - The public flagship domain is **`poweredbyproof.com`**.
 - The public brand remains **PROOF**; the domain is not a replacement product name or logo.
-- Before W2 deployment, the site receives one bounded flagship visual-polish gate.
-- The owner-approved Proof product-mark family is the visual anchor: circular P/check master mark, deep navy + electric blue, wide squared `PROOF` wordmark, and subordinate product names such as `ROOM`, `DEPLOY`, `CLOUD`, and `CORE` in Proof blue.
-- Proof Room's accepted G1+ UI is an approved secondary reference for transferable design-system DNA: white-first canvas, navy/blue signal language, restrained depth/motion, compact chrome, progressive disclosure, touch/focus quality, and content-first hierarchy.
-- Owner Proof Infrastructure visual references remain the macro reference for engineering lines, nodes, architecture storytelling, large typography, precise raised surfaces, and generous white space.
+- Current owner preference for future public hosting is Cloudflare-based rather than exposing Proof Core.
+- Production hosting/domain/DNS/TLS/indexing remain a separate W2 decision and proof.
 
-## Objective
+## Current hold
 
-Make the four-route W1 site feel like the flagship front door to one engineered Proof ecosystem while preserving W1 truth, hierarchy, accessibility, performance, and public-safety boundaries.
+There is **no active Website Codex gate**.
 
-The intended feeling is **engineered platform / precision system** — not generic SaaS, not cyberpunk, and not gratuitous futuristic decoration.
+Do not send generic `CONTINUE` until Review-Control explicitly promotes another bounded website gate.
 
-Issue `#6` contains the complete visual brief, preferred homepage progressive architecture story, Proof Stage product-showcase direction, preserve/out-of-scope boundaries, and acceptance checklist.
-
-## Preserve
-
-- accepted routes `/`, `/ecosystem`, `/products`, `/principles`;
-- `ECOSYSTEM_CONTENT_MAP.md` and current accepted Proof repos as public-truth authority;
-- current Proof Control / Proof Cloud App read-only wording boundary;
-- static/fast delivery with no backend/auth/database/CMS requirement;
-- accessibility and non-color-only meaning;
-- existing owner reference assets unless explicitly approved otherwise;
-- `robots.txt` public-crawl hold until W2 is separately accepted.
-
-## Out of scope
-
-W1.5 does **not** authorize:
+W1.5 acceptance does **not** authorize:
 
 - Cloudflare Workers or any other production deployment;
 - DNS, TLS, or domain cutover;
-- changing crawl/indexing policy;
+- changing `robots.txt` to permit indexing;
 - analytics/tracking/cookies;
 - forms, accounts, auth, payments, pricing, or sales/waitlist claims;
-- fabricated screenshots/capabilities/live status;
+- backend/API/database work;
 - changes to other Proof repositories;
-- unrelated W3 product-detail/docs expansion.
+- W3 product-detail/docs expansion.
 
 ## Next valid action
 
-`CONTINUE — CODEX IMPLEMENT W1.5 / ISSUE #6 ONLY; OPEN ONE FOCUSED DRAFT PR; RUN DETERMINISTIC + DESKTOP/IPAD/PHONE/404 BROWSER EVIDENCE; STOP AWAITING_REVIEW.`
+`OWNER / REVIEW-CONTROL DECISION — promote W2 public hosting and domain activation only when ready to perform and review production publication.`
 
 ## Hard rule
 
-W1.5 is a bounded flagship presentation gate. Codex must preserve accepted public truth and stop for exact-head Review-Control audit before merge. A successful W1.5 build does not authorize W2 public deployment.
+The accepted flagship artifact is ready for a future hosting gate, but a successful build or merge does not itself authorize public deployment.
