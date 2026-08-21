@@ -48,27 +48,28 @@ W1 does **not** authorize production DNS/domain cutover, paid services, tracking
 
 ## W1.5 — Flagship visual system and Proof product-family integration
 
-**State:** ACTIVE / READY_FOR_CODEX  
-**Issue:** #6  
-**PR:** none
+**State:** COMPLETE  
+**Issue:** #6 — closed  
+**PR:** #7 — merged  
+**Accepted head:** `86bc5bea427877fb110b3154e36f4d1c878ab988`  
+**Squash merge:** `78ce2330b39dab909d0cbfc1104119b0b8a4c83a`
 
-Finish line:
+Accepted finish line:
 
-Elevate the accepted W1 artifact into the flagship visual front door for the Proof ecosystem without changing its public-truth foundation.
+The accepted W1 artifact is now the flagship visual front door for the Proof ecosystem without changing its public-truth foundation.
 
-The gate must:
+W1.5 establishes:
 
-- establish one recognizable Proof visual system across all four routes;
-- use the owner-approved circular P/check + `PROOF` product-family language as the brand anchor;
-- preserve the public brand as **PROOF** while recording **`poweredbyproof.com`** as the chosen public domain for future W2 activation;
-- borrow transferable Proof Room G1+ design DNA: white-first canvas, navy/blue signal language, compact content-first chrome, restrained depth/motion, progressive disclosure, visible focus and touch quality;
-- borrow owner Proof Infrastructure macro language: architecture lines/nodes, precise raised surfaces, large typography, generous white space, and engineered system storytelling;
-- strengthen the homepage hero and progressive ecosystem explanation without fabricating architecture or product capability;
-- refine product showcases so Platform / Operations / Application / Concept groupings feel like one engineered family;
-- preserve accessibility, reduced-motion behavior, performance, static delivery, and deterministic verification;
-- prove desktop, iPad/tablet, phone, and 404 behavior on the exact implementation head.
-
-Full scope, preserve rules, out-of-scope boundaries, and acceptance evidence live in Issue #6 and `CURRENT.md`.
+- one recognizable Proof visual system across all four routes;
+- the owner-approved circular P/check + `PROOF` product-family language as the brand anchor;
+- the public brand as **PROOF** with **`poweredbyproof.com`** recorded as the future W2 production domain;
+- Proof Room G1+ design DNA: white-first canvas, navy/blue signal language, compact content-first chrome, restrained depth/motion, progressive disclosure, visible focus and touch quality;
+- Proof Infrastructure macro language: architecture lines/nodes, precise raised surfaces, large typography, generous white space, and engineered system storytelling;
+- a progressive `SOURCE → DEPLOY → CLOUD → CORE` flagship path with optional Base;
+- reusable Proof Stage product/application presentations;
+- deliberate `PLATFORM`, `OPERATIONS`, `APPLICATION`, and `CONCEPT` classification labels;
+- desktop, iPad/tablet, phone, and 404 exact-head browser evidence;
+- preserved W1 truth, accessibility, reduced-motion behavior, static delivery, and deterministic verification.
 
 W1.5 does **not** authorize production deployment, DNS/TLS changes, crawl/indexing activation, analytics, forms, accounts, payments, pricing, or changes to other Proof repositories.
 
