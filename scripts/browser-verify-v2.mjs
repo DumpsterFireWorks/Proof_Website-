@@ -97,6 +97,9 @@ try {
         const images = [...document.querySelectorAll(".owner-brand-lockup__image")].map((element) => {
           const rect = element.getBoundingClientRect();
           const styles = getComputedStyle(element);
+          const wrapper = element.closest(".owner-brand-lockup");
+          const wrapperRect = wrapper?.getBoundingClientRect();
+          const wrapperStyles = wrapper ? getComputedStyle(wrapper) : null;
           return {
             alt: element.getAttribute("alt") ?? "",
             src: element.getAttribute("src") ?? "",
@@ -107,7 +110,10 @@ try {
             renderHeight: rect.height,
             opacity: Number.parseFloat(styles.opacity || "1"),
             visibility: styles.visibility,
-            inkRatio: measureInkRatio(element)
+            inkRatio: measureInkRatio(element),
+            wrapperWidth: wrapperRect?.width ?? 0,
+            wrapperHeight: wrapperRect?.height ?? 0,
+            wrapperBackgroundImage: wrapperStyles?.backgroundImage ?? "none"
           };
         });
 
@@ -148,10 +154,12 @@ try {
       if (audit.horizontalOverflow) failures.push(`${prefix}: horizontal overflow detected`);
       if (!audit.reducedMotion) failures.push(`${prefix}: reduced-motion preference not applied`);
       if (deviceName === "phone" && audit.minimumPrimaryTarget < 44) failures.push(`${prefix}: primary nav target below 44px`);
+
       for (const image of audit.ownerImages) {
-        if (image.naturalWidth < 100 || image.naturalHeight < 100) failures.push(`${prefix}: owner logo failed to load (${image.alt})`);
-        if (image.renderWidth < 40 || image.renderHeight < 40 || image.opacity < 0.95 || image.visibility !== "visible") {
-          failures.push(`${prefix}: owner logo not visibly rendered (${image.alt})`);
+        if (image.naturalWidth < 100 || image.naturalHeight < 100) failures.push(`${prefix}: owner logo failed to load (${image.alt || image.asset})`);
+        const isProductDisplay = image.asset.includes("/brand/display/");
+        if (!isProductDisplay && (image.renderWidth < 40 || image.renderHeight < 40 || image.opacity < 0.95 || image.visibility !== "visible")) {
+          failures.push(`${prefix}: master owner logo not visibly rendered (${image.alt || image.asset})`);
         }
       }
 
@@ -164,7 +172,9 @@ try {
         const productAssets = audit.ownerImages.filter((image) => image.asset.includes("/brand/display/"));
         if (new Set(productAssets.map((image) => image.asset)).size < 10) failures.push(`${prefix}: complete 10-product display family not present`);
         for (const image of productAssets) {
-          if (image.inkRatio < 0.08) failures.push(`${prefix}: product logo rendered visually blank (${image.alt}, ink ${image.inkRatio.toFixed(3)})`);
+          if (image.inkRatio < 0.08) failures.push(`${prefix}: product logo source is visually blank (${image.asset}, ink ${image.inkRatio.toFixed(3)})`);
+          if (image.wrapperWidth < 100 || image.wrapperHeight < 80) failures.push(`${prefix}: product display bay collapsed (${image.asset})`);
+          if (!image.wrapperBackgroundImage.includes("proof-")) failures.push(`${prefix}: product display bay is not painting its official logo (${image.asset})`);
         }
       }
 
@@ -223,4 +233,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`V2 browser verification passed: visible complete Proof family, approved ecosystem hero, zero generated/fallback marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
+console.log(`V2 browser verification passed: official Proof product marks painted on their display bays, approved ecosystem hero, zero generated/fallback marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
