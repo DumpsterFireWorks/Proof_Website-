@@ -1,0 +1,43 @@
+name: V2 flagship visual QA
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build production site
+        run: npm run build
+      - name: Start production preview
+        run: |
+          nohup npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/proof-preview.log 2>&1 &
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/proof-preview.log
+          exit 1
+      - name: Run real-brand browser verification
+        env:
+          PROOF_SITE_URL: http://127.0.0.1:4173
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node scripts/browser-verify-v2.mjs
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof-v2-browser-evidence
+          path: evidence/v2-preview
+          if-no-files-found: error
