@@ -4,12 +4,13 @@ import { extname, join, resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const checkDist = process.argv.includes("--dist");
+const canonicalOrigin = "https://poweredbyproof.com";
 
 const routes = [
-  ["/", "index.html", "Proof — Own the path from idea to application"],
-  ["/ecosystem/", "ecosystem/index.html", "The Proof ecosystem — Connected, not monolithic"],
-  ["/products/", "products/index.html", "Proof products — A modular ecosystem"],
-  ["/principles/", "principles/index.html", "Proof principles — Ownership that stays practical"]
+  ["/", "index.html", "Proof — Own the path from idea to application", `${canonicalOrigin}/`],
+  ["/ecosystem/", "ecosystem/index.html", "The Proof ecosystem — Connected, not monolithic", `${canonicalOrigin}/ecosystem/`],
+  ["/products/", "products/index.html", "Proof products — A modular ecosystem", `${canonicalOrigin}/products/`],
+  ["/principles/", "principles/index.html", "Proof principles — Ownership that stays practical", `${canonicalOrigin}/principles/`]
 ];
 
 const referenceHashes = new Map([
@@ -32,10 +33,12 @@ function read(relativePath) {
   return existsSync(absolutePath) ? readFileSync(absolutePath, "utf8") : "";
 }
 
-for (const [, file, title] of routes) {
+for (const [, file, title, canonicalUrl] of routes) {
   const html = read(file);
   assert(html.includes(`<title>${title}</title>`), `${file} has an unexpected title`);
   assert(/<meta name="description" content="[^"]{40,}"/.test(html), `${file} needs a substantial meta description`);
+  assert(html.includes(`<link rel="canonical" href="${canonicalUrl}" />`), `${file} has an unexpected canonical URL`);
+  assert(html.includes(`<meta property="og:url" content="${canonicalUrl}" />`), `${file} has an unexpected Open Graph URL`);
   assert(html.includes('property="og:title"'), `${file} is missing Open Graph title metadata`);
   assert(html.includes('name="twitter:title"'), `${file} is missing X/Twitter title metadata`);
   assert(html.includes('name="viewport"'), `${file} is missing responsive viewport metadata`);
@@ -70,7 +73,6 @@ for (const phrase of requiredPublicCopy) {
 }
 
 const forbiddenPatterns = [
-  [/https?:\/\//i, "external runtime URL"],
   [/\b(?:gtag|google-analytics|googletagmanager|segment|mixpanel|hotjar)\b/i, "tracking or analytics code"],
   [/<form\b/i, "data-collection form"],
   [/\b(?:10|172\.(?:1[6-9]|2\d|3[01])|192\.168)\.\d{1,3}\.\d{1,3}\b/, "private network address"],
@@ -80,6 +82,11 @@ const forbiddenPatterns = [
 
 for (const [pattern, label] of forbiddenPatterns) {
   assert(!pattern.test(source), `Source contains a forbidden ${label}`);
+}
+
+const absoluteUrls = source.match(/https?:\/\/[^\s"'<>]+/gi) ?? [];
+for (const url of absoluteUrls) {
+  assert(url.startsWith(`${canonicalOrigin}/`), `Source contains an unexpected external runtime URL: ${url}`);
 }
 
 for (const [route] of routes) {
@@ -96,7 +103,23 @@ for (const [file, expectedHash] of referenceHashes) {
 }
 
 const robots = read("public/robots.txt");
-assert(robots.includes("Disallow: /"), "W1 robots policy must prevent indexing before the hosting gate");
+assert(robots.includes("Allow: /"), "W2 robots policy must allow public crawling");
+assert(!robots.includes("Disallow: /"), "W2 robots policy must not retain the pre-launch crawl hold");
+assert(robots.includes(`Sitemap: ${canonicalOrigin}/sitemap.xml`), "W2 robots policy must advertise the production sitemap");
+
+const sitemap = read("public/sitemap.xml");
+for (const [, , , canonicalUrl] of routes) {
+  assert(sitemap.includes(`<loc>${canonicalUrl}</loc>`), `Sitemap is missing ${canonicalUrl}`);
+}
+
+const notFound = read("404.html");
+assert(notFound.includes('<meta name="robots" content="noindex" />'), "404 page must remain noindex");
+
+const wrangler = JSON.parse(read("wrangler.jsonc"));
+assert(wrangler.assets?.directory === "./dist", "Wrangler assets directory must target the deterministic Vite output");
+assert(wrangler.assets?.html_handling === "force-trailing-slash", "Wrangler must preserve the accepted trailing-slash route shape");
+assert(wrangler.assets?.not_found_handling === "404-page", "Wrangler must serve the custom 404 page for unknown routes");
+assert(!wrangler.main, "The static Website must not add an unnecessary Worker runtime script");
 
 if (checkDist) {
   const dist = join(root, "dist");
@@ -106,6 +129,7 @@ if (checkDist) {
   }
   assert(existsSync(join(dist, "404.html")), "Built 404 page is missing");
   assert(existsSync(join(dist, "robots.txt")), "Built robots policy is missing");
+  assert(existsSync(join(dist, "sitemap.xml")), "Built sitemap is missing");
 
   if (existsSync(dist)) {
     const textExtensions = new Set([".html", ".js", ".css", ".txt", ".xml", ".json"]);

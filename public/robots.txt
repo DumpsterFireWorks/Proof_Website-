@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# W1 is a review artifact. Indexing remains disabled until a separately approved public-hosting gate.
+Sitemap: https://poweredbyproof.com/sitemap.xml
