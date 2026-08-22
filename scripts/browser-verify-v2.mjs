@@ -72,13 +72,45 @@ try {
         const h1 = document.querySelector("h1");
         const h1Rect = h1?.getBoundingClientRect();
         const brands = [...document.querySelectorAll(".owner-brand-lockup")].map((element) => element.getAttribute("data-owner-brand") ?? "");
-        const images = [...document.querySelectorAll(".owner-brand-lockup__image")].map((element) => ({
-          alt: element.getAttribute("alt") ?? "",
-          src: element.getAttribute("src") ?? "",
-          asset: element.getAttribute("data-asset") ?? "",
-          naturalWidth: element instanceof HTMLImageElement ? element.naturalWidth : 0,
-          naturalHeight: element instanceof HTMLImageElement ? element.naturalHeight : 0
-        }));
+
+        const measureInkRatio = (image) => {
+          if (!(image instanceof HTMLImageElement) || !image.complete || image.naturalWidth < 1) return 0;
+          const canvas = document.createElement("canvas");
+          canvas.width = 48;
+          canvas.height = 48;
+          const context = canvas.getContext("2d", { willReadFrequently: true });
+          if (!context) return 0;
+          context.fillStyle = "#ffffff";
+          context.fillRect(0, 0, 48, 48);
+          context.drawImage(image, 0, 0, 48, 48);
+          const pixels = context.getImageData(0, 0, 48, 48).data;
+          let ink = 0;
+          for (let index = 0; index < pixels.length; index += 4) {
+            const red = pixels[index];
+            const green = pixels[index + 1];
+            const blue = pixels[index + 2];
+            if (red < 225 || green < 225 || blue < 225) ink += 1;
+          }
+          return ink / (48 * 48);
+        };
+
+        const images = [...document.querySelectorAll(".owner-brand-lockup__image")].map((element) => {
+          const rect = element.getBoundingClientRect();
+          const styles = getComputedStyle(element);
+          return {
+            alt: element.getAttribute("alt") ?? "",
+            src: element.getAttribute("src") ?? "",
+            asset: element.getAttribute("data-asset") ?? "",
+            naturalWidth: element instanceof HTMLImageElement ? element.naturalWidth : 0,
+            naturalHeight: element instanceof HTMLImageElement ? element.naturalHeight : 0,
+            renderWidth: rect.width,
+            renderHeight: rect.height,
+            opacity: Number.parseFloat(styles.opacity || "1"),
+            visibility: styles.visibility,
+            inkRatio: measureInkRatio(element)
+          };
+        });
+
         const ecosystemHero = document.querySelector(".owner-ecosystem-hero img");
         return {
           title: document.title,
@@ -118,6 +150,9 @@ try {
       if (deviceName === "phone" && audit.minimumPrimaryTarget < 44) failures.push(`${prefix}: primary nav target below 44px`);
       for (const image of audit.ownerImages) {
         if (image.naturalWidth < 100 || image.naturalHeight < 100) failures.push(`${prefix}: owner logo failed to load (${image.alt})`);
+        if (image.renderWidth < 40 || image.renderHeight < 40 || image.opacity < 0.95 || image.visibility !== "visible") {
+          failures.push(`${prefix}: owner logo not visibly rendered (${image.alt})`);
+        }
       }
 
       if (routeName === "products") {
@@ -126,8 +161,11 @@ try {
         for (const product of expectedProducts) {
           if (!audit.ownerBrands.includes(product)) failures.push(`${prefix}: official ${product} logo not mounted`);
         }
-        const productAssets = audit.ownerImages.filter((image) => image.asset.includes("/brand/products/"));
-        if (new Set(productAssets.map((image) => image.asset)).size < 10) failures.push(`${prefix}: complete 10-product asset family not present`);
+        const productAssets = audit.ownerImages.filter((image) => image.asset.includes("/brand/display/"));
+        if (new Set(productAssets.map((image) => image.asset)).size < 10) failures.push(`${prefix}: complete 10-product display family not present`);
+        for (const image of productAssets) {
+          if (image.inkRatio < 0.08) failures.push(`${prefix}: product logo rendered visually blank (${image.alt}, ink ${image.inkRatio.toFixed(3)})`);
+        }
       }
 
       if (routeName === "home") {
@@ -185,4 +223,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`V2 browser verification passed: complete official Proof family, approved ecosystem hero, zero generated/fallback marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
+console.log(`V2 browser verification passed: visible complete Proof family, approved ecosystem hero, zero generated/fallback marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
