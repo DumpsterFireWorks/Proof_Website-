@@ -14,6 +14,8 @@
 .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact {
   isolation: isolate !important;
   overflow: hidden !important;
+  min-height: 236px !important;
+  align-self: center;
   background-image:
     var(--owner-product-logo),
     radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.99), rgba(247, 251, 255, 0.97) 58%, rgba(237, 245, 255, 0.95));
@@ -49,6 +51,7 @@
 /* White summary cards need no extra bay chrome; use the approved product
  * artwork directly on the card surface. */
 .flagship-final .proof-family-card .owner-brand-lockup--exact {
+  min-height: 142px !important;
   background-image: var(--owner-product-logo);
   background-repeat: no-repeat;
   background-position: left center;
@@ -57,10 +60,12 @@
 
 @media (max-width: 600px) {
   .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact {
+    min-height: 210px !important;
     background-size: min(74%, 214px) auto, 100% 100%;
   }
 
   .flagship-final .proof-family-card .owner-brand-lockup--exact {
+    min-height: 128px !important;
     background-size: 132px auto;
   }
 }
