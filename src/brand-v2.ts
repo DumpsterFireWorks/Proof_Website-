@@ -19,12 +19,15 @@ function buildOwnerLogo(productName?: string): HTMLElement {
   wrapper.className = "owner-brand-lockup";
 
   const exact = productName ? exactProductLogos[productName] : undefined;
+  const brandIdentity = exact?.alt ?? (productName && productName !== "FAMILY" ? `Proof ${productName}` : "Proof");
+  wrapper.dataset.ownerBrand = brandIdentity;
+
   const image = document.createElement("img");
   image.className = "owner-brand-lockup__image";
   image.loading = "eager";
   image.decoding = "async";
   image.src = exact?.src ?? proofMasterUrl;
-  image.alt = exact?.alt ?? "Proof";
+  image.alt = brandIdentity;
 
   wrapper.append(image);
 
@@ -36,6 +39,8 @@ function buildOwnerLogo(productName?: string): HTMLElement {
   }
 
   if (productName === "FAMILY") {
+    wrapper.dataset.ownerBrand = "Proof product family";
+    image.alt = "Proof";
     const label = document.createElement("span");
     label.className = "owner-brand-lockup__product owner-brand-lockup__product--family";
     label.textContent = "PRODUCT FAMILY";
