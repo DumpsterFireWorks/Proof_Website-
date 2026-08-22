@@ -5,25 +5,29 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-display-assets:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --quiet pillow
-      - name: Composite and crop approved product marks
+      - name: Build browser-safe display derivatives
         run: |
           python - <<'PY'
           from pathlib import Path
           from PIL import Image
 
           source = Path('public/brand/products')
-          target = Path('generated-brand-display')
+          target = Path('public/brand/display')
           target.mkdir(parents=True, exist_ok=True)
 
           for path in sorted(source.glob('*.png')):
@@ -47,8 +51,14 @@ jobs:
               white.convert('RGB').save(out, 'PNG', optimize=True)
               print(f'{path.name}: {image.size} -> {white.size}')
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: proof-brand-display-assets
-          path: generated-brand-display
-          if-no-files-found: error
+      - name: Commit display derivatives when changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/brand/display
+          if git diff --cached --quiet; then
+            echo "Display assets already current."
+            exit 0
+          fi
+          git commit -m "Add browser-safe Proof logo display derivatives"
+          git push origin HEAD:${{ github.head_ref }}
