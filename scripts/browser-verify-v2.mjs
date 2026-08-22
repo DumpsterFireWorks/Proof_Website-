@@ -32,6 +32,19 @@ const devices = [
   ["phone", { width: 390, height: 844 }]
 ];
 
+const expectedProducts = [
+  "Proof Deploy",
+  "Proof Room",
+  "Proof Cloud",
+  "Proof Core",
+  "Proof Base",
+  "Proof Control",
+  "Proof Cloud App",
+  "Proof Quote",
+  "Proof Flow",
+  "Proof OS"
+];
+
 const failures = [];
 const results = [];
 const browser = await chromium.launch({ executablePath, headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage"] });
@@ -62,9 +75,11 @@ try {
         const images = [...document.querySelectorAll(".owner-brand-lockup__image")].map((element) => ({
           alt: element.getAttribute("alt") ?? "",
           src: element.getAttribute("src") ?? "",
+          asset: element.getAttribute("data-asset") ?? "",
           naturalWidth: element instanceof HTMLImageElement ? element.naturalWidth : 0,
           naturalHeight: element instanceof HTMLImageElement ? element.naturalHeight : 0
         }));
+        const ecosystemHero = document.querySelector(".owner-ecosystem-hero img");
         return {
           title: document.title,
           h1Count: document.querySelectorAll("h1").length,
@@ -77,9 +92,15 @@ try {
           ownerBrands: brands,
           ownerImages: images,
           generatedProofMarkCount: document.querySelectorAll(".proof-mark").length,
+          fallbackProductLabelCount: document.querySelectorAll(".owner-brand-lockup__product").length,
           horizontalOverflow: document.documentElement.scrollWidth > window.innerWidth + 1,
           reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-          minimumPrimaryTarget: Math.min(...[...document.querySelectorAll(".primary-nav a")].map((element) => element.getBoundingClientRect().height))
+          minimumPrimaryTarget: Math.min(...[...document.querySelectorAll(".primary-nav a")].map((element) => element.getBoundingClientRect().height)),
+          ecosystemHero: ecosystemHero instanceof HTMLImageElement ? {
+            src: ecosystemHero.getAttribute("src") ?? "",
+            naturalWidth: ecosystemHero.naturalWidth,
+            naturalHeight: ecosystemHero.naturalHeight
+          } : null
         };
       });
 
@@ -91,6 +112,7 @@ try {
       if (audit.hasForm) failures.push(`${prefix}: unexpected form found`);
       if (audit.ownerBrandCount < 2) failures.push(`${prefix}: owner Proof brand assets are missing`);
       if (audit.generatedProofMarkCount !== 0) failures.push(`${prefix}: generated fake Proof SVG mark survived (${audit.generatedProofMarkCount})`);
+      if (audit.fallbackProductLabelCount !== 0) failures.push(`${prefix}: fallback typed product label survived (${audit.fallbackProductLabelCount})`);
       if (audit.horizontalOverflow) failures.push(`${prefix}: horizontal overflow detected`);
       if (!audit.reducedMotion) failures.push(`${prefix}: reduced-motion preference not applied`);
       if (deviceName === "phone" && audit.minimumPrimaryTarget < 44) failures.push(`${prefix}: primary nav target below 44px`);
@@ -101,14 +123,18 @@ try {
       if (routeName === "products") {
         const stageCount = await page.locator(".proof-stage-card").count();
         if (stageCount !== 10) failures.push(`${prefix}: expected 10 product stages, found ${stageCount}`);
-        if (!audit.ownerBrands.includes("Proof Deploy")) failures.push(`${prefix}: real Proof Deploy logo not mounted`);
-        if (!audit.ownerBrands.includes("Proof Room")) failures.push(`${prefix}: real Proof Room logo not mounted`);
+        for (const product of expectedProducts) {
+          if (!audit.ownerBrands.includes(product)) failures.push(`${prefix}: official ${product} logo not mounted`);
+        }
+        const productAssets = audit.ownerImages.filter((image) => image.asset.includes("/brand/products/"));
+        if (new Set(productAssets.map((image) => image.asset)).size < 10) failures.push(`${prefix}: complete 10-product asset family not present`);
       }
 
       if (routeName === "home") {
-        const pathText = await page.locator(".signal-path--flagship").innerText();
-        for (const label of ["Source", "Deploy", "Cloud", "Core"]) {
-          if (!pathText.includes(label)) failures.push(`${prefix}: flagship path missing ${label}`);
+        if (!audit.ecosystemHero) failures.push(`${prefix}: approved ecosystem hero not mounted`);
+        else {
+          if (!audit.ecosystemHero.src.includes("/brand/hero/proof-ecosystem-hero.png")) failures.push(`${prefix}: wrong ecosystem hero asset`);
+          if (audit.ecosystemHero.naturalWidth < 500 || audit.ecosystemHero.naturalHeight < 300) failures.push(`${prefix}: ecosystem hero failed to load`);
         }
       }
 
@@ -159,4 +185,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`V2 browser verification passed: real owner logos, zero generated Proof SVG marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
+console.log(`V2 browser verification passed: complete official Proof family, approved ecosystem hero, zero generated/fallback marks, ${routes.length} routes × ${devices.length} viewports plus 404, no overflow, clean browser.`);
