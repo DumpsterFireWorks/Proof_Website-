@@ -1,5 +1,6 @@
 import "./flagship-v2.css";
 import "./final-brand.css";
+import "./final-brand-render-fix.css";
 
 const proofMasterUrl = "/brand/master/proof-master.svg";
 const proofHeroUrl = "/brand/hero/proof-ecosystem-hero.png";
