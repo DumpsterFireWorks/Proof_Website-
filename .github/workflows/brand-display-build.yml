@@ -1,0 +1,54 @@
+name: Build brand display assets
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-display-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet pillow
+      - name: Composite and crop approved product marks
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+
+          source = Path('public/brand/products')
+          target = Path('generated-brand-display')
+          target.mkdir(parents=True, exist_ok=True)
+
+          for path in sorted(source.glob('*.png')):
+              image = Image.open(path).convert('RGBA')
+              alpha = image.getchannel('A')
+              bbox = alpha.getbbox()
+              if not bbox:
+                  raise SystemExit(f'No visible pixels in {path}')
+
+              left, top, right, bottom = bbox
+              pad = 48
+              left = max(0, left - pad)
+              top = max(0, top - pad)
+              right = min(image.width, right + pad)
+              bottom = min(image.height, bottom + pad)
+
+              crop = image.crop((left, top, right, bottom))
+              white = Image.new('RGBA', crop.size, (255, 255, 255, 255))
+              white.alpha_composite(crop)
+              out = target / path.name
+              white.convert('RGB').save(out, 'PNG', optimize=True)
+              print(f'{path.name}: {image.size} -> {white.size}')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proof-brand-display-assets
+          path: generated-brand-display
+          if-no-files-found: error
