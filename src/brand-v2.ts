@@ -6,16 +6,16 @@ const proofMasterUrl = "/brand/master/proof-master.svg";
 const proofHeroUrl = "/brand/hero/proof-ecosystem-hero.png";
 
 const exactProductLogos: Record<string, { src: string; alt: string }> = {
-  DEPLOY: { src: "/brand/products/proof-deploy.png", alt: "Proof Deploy" },
-  ROOM: { src: "/brand/products/proof-room.png", alt: "Proof Room" },
-  CLOUD: { src: "/brand/products/proof-cloud.png", alt: "Proof Cloud" },
-  CORE: { src: "/brand/products/proof-core.png", alt: "Proof Core" },
-  BASE: { src: "/brand/products/proof-base.png", alt: "Proof Base" },
-  CONTROL: { src: "/brand/products/proof-control.png", alt: "Proof Control" },
-  "CLOUD APP": { src: "/brand/products/proof-cloud-app.png", alt: "Proof Cloud App" },
-  QUOTE: { src: "/brand/products/proof-quote.png", alt: "Proof Quote" },
-  FLOW: { src: "/brand/products/proof-flow.png", alt: "Proof Flow" },
-  OS: { src: "/brand/products/proof-os.png", alt: "Proof OS" }
+  DEPLOY: { src: "/brand/display/proof-deploy.png", alt: "Proof Deploy" },
+  ROOM: { src: "/brand/display/proof-room.png", alt: "Proof Room" },
+  CLOUD: { src: "/brand/display/proof-cloud.png", alt: "Proof Cloud" },
+  CORE: { src: "/brand/display/proof-core.png", alt: "Proof Core" },
+  BASE: { src: "/brand/display/proof-base.png", alt: "Proof Base" },
+  CONTROL: { src: "/brand/display/proof-control.png", alt: "Proof Control" },
+  "CLOUD APP": { src: "/brand/display/proof-cloud-app.png", alt: "Proof Cloud App" },
+  QUOTE: { src: "/brand/display/proof-quote.png", alt: "Proof Quote" },
+  FLOW: { src: "/brand/display/proof-flow.png", alt: "Proof Flow" },
+  OS: { src: "/brand/display/proof-os.png", alt: "Proof OS" }
 };
 
 function normalizedProductName(lockup: Element): string | undefined {
