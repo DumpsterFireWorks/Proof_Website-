@@ -1,0 +1,31 @@
+/* Render-order hardening for official product PNGs.
+ * Keeps display-bay chrome behind the untouched owner assets.
+ */
+
+.flagship-final .proof-stage-card__visual .owner-brand-lockup--exact {
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+
+.flagship-final .proof-stage-card__visual .owner-brand-lockup--exact::before {
+  z-index: 0 !important;
+}
+
+.flagship-final .proof-stage-card__visual .owner-brand-lockup--exact::after {
+  z-index: 1 !important;
+}
+
+.flagship-final .proof-stage-card__visual .owner-brand-lockup--exact .owner-brand-lockup__image {
+  position: relative !important;
+  z-index: 10 !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  transform: none !important;
+  clip-path: none !important;
+  mask: none !important;
+  -webkit-mask: none !important;
+  object-fit: contain !important;
+}
