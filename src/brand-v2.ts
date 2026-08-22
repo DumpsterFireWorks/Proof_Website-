@@ -32,15 +32,21 @@ function buildOwnerLogo(productName?: string): HTMLElement {
 
   const brandIdentity = exact?.alt ?? "Proof";
   wrapper.dataset.ownerBrand = brandIdentity;
-  if (exact) wrapper.dataset.product = normalized;
+  if (exact) {
+    wrapper.dataset.product = normalized;
+    wrapper.setAttribute("role", "img");
+    wrapper.setAttribute("aria-label", brandIdentity);
+    wrapper.style.setProperty("--owner-product-logo", `url("${exact.src}")`);
+  }
 
   const image = document.createElement("img");
   image.className = "owner-brand-lockup__image";
   image.loading = "eager";
   image.decoding = "async";
   image.src = exact?.src ?? proofMasterUrl;
-  image.alt = brandIdentity;
+  image.alt = exact ? "" : brandIdentity;
   image.dataset.asset = exact?.src ?? proofMasterUrl;
+  if (exact) image.setAttribute("aria-hidden", "true");
 
   wrapper.append(image);
   return wrapper;
