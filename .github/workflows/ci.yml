@@ -1,4 +1,4 @@
-name: W1 site CI
+name: W2 site and Cloudflare prep CI
 
 on:
   pull_request:
@@ -29,5 +29,5 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Type-check, validate, and build
-        run: npm run verify
+      - name: Type-check, validate, build, and dry-run Cloudflare packaging
+        run: npm run verify:cloudflare
