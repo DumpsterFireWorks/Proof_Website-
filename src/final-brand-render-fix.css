@@ -1,31 +1,66 @@
-/* Render-order hardening for official product PNGs.
- * Keeps display-bay chrome behind the untouched owner assets.
+/* Final brand display rendering.
+ * Product marks are painted onto the display-bay surface itself so the
+ * presentation is immune to child-image stacking/compositing quirks.
+ * Canonical transparent originals remain preserved under public/brand/products.
  */
+
+.flagship-final .owner-brand-lockup--exact {
+  background-image: var(--owner-product-logo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: min(72%, 245px) auto;
+}
 
 .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact {
   isolation: isolate !important;
-  overflow: visible !important;
+  overflow: hidden !important;
+  background-image:
+    var(--owner-product-logo),
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.99), rgba(247, 251, 255, 0.97) 58%, rgba(237, 245, 255, 0.95));
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: min(72%, 245px) auto, 100% 100%;
 }
 
 .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact::before {
-  z-index: 0 !important;
+  z-index: 2 !important;
 }
 
 .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact::after {
-  z-index: 1 !important;
+  z-index: 2 !important;
 }
 
-.flagship-final .proof-stage-card__visual .owner-brand-lockup--exact .owner-brand-lockup__image {
-  position: relative !important;
-  z-index: 10 !important;
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  filter: none !important;
-  mix-blend-mode: normal !important;
-  transform: none !important;
-  clip-path: none !important;
-  mask: none !important;
-  -webkit-mask: none !important;
-  object-fit: contain !important;
+/* Source image remains in DOM for asset loading/verification only.
+ * The visible artwork is the wrapper background above. */
+.flagship-final .owner-brand-lockup--exact .owner-brand-lockup__image {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+}
+
+/* White summary cards need no extra bay chrome; use the approved product
+ * artwork directly on the card surface. */
+.flagship-final .proof-family-card .owner-brand-lockup--exact {
+  background-image: var(--owner-product-logo);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 150px auto;
+}
+
+@media (max-width: 600px) {
+  .flagship-final .proof-stage-card__visual .owner-brand-lockup--exact {
+    background-size: min(74%, 214px) auto, 100% 100%;
+  }
+
+  .flagship-final .proof-family-card .owner-brand-lockup--exact {
+    background-size: 132px auto;
+  }
 }
