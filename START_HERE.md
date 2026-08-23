@@ -8,7 +8,7 @@ Read in this order:
 
 1. `PROJECT_SCOPE.md`
 2. `CURRENT.md`
-3. active issue / PR / exact head
+3. active issue / PR / exact head, if one exists
 4. `ECOSYSTEM_CONTENT_MAP.md`
 5. `SITE_INFORMATION_ARCHITECTURE.md`
 6. `REFERENCE_IMAGES.md`
@@ -32,27 +32,40 @@ When source documents disagree, do not silently choose the more exciting claim. 
 
 Never copy internal technical detail into public content merely because it exists in GitHub. Follow the public-safe boundary in `PROJECT_SCOPE.md` and `ECOSYSTEM_CONTENT_MAP.md`.
 
-## Accepted visual foundation
+## Accepted visual / brand foundation
 
-W1.5 is complete and accepted. The five original owner PNGs remain preserved visual references, and the accepted flagship implementation uses the owner-approved Proof family language: circular P/check master mark, navy + electric blue, wide `PROOF` wordmark, subordinate product names, Proof Room transferable UI DNA, and Proof Infrastructure macro engineering/architecture language.
+The production Website now uses the owner-approved Proof brand package as the canonical public presentation:
 
-Do not redesign W1.5 during W2 except for the smallest source changes required for correct production hosting/canonical/indexing behavior.
+- master `PROOF` identity only;
+- official product-family logos for Deploy, Room, Cloud, Core, Base, Control, Cloud App, Quote, Flow, and OS;
+- navy + electric-blue precision language;
+- approved ecosystem hero centered on `SOURCE → DEPLOY → CLOUD → CORE`, with optional Base and Control as ecosystem visibility;
+- browser-safe display derivatives generated from the canonical product artwork while preserving the owner originals unchanged.
+
+Canonical brand files live under `public/brand/`. Historical Infrastructure artwork is retained under `references/brand/` and must not be treated as automatic current website copy.
+
+## Production state
+
+**W2 is COMPLETE.**
+
+- Issue `#8` — CLOSED COMPLETE
+- production domain: `https://poweredbyproof.com`
+- hosting: Cloudflare Workers Static Assets
+- production source authority: GitHub `main`
+- final accepted flagship merge: `447ce2ba4c7446ee6ba96f6769f9055f9b49a1bb`
+- post-reconnect production trigger: `6f359c944cb0aad505284f33d082bd149d99dd1d`
+- production evidence: `evidence/w2/PRODUCTION_ACCEPTANCE.md`
+
+Cloudflare Git authorization was repaired during launch and the Website repository was explicitly re-selected. GitHub remains the source of truth; Cloudflare is the replaceable hosting layer.
 
 ## Current command
 
-Follow `CURRENT.md` and Issue `#8` exactly.
+Follow `CURRENT.md`.
 
-The active gate is **W2 — Cloudflare production hosting and poweredbyproof.com activation**.
+There is **no active implementation gate** after W2 closeout.
 
-W2 authorizes only the production-launch path recorded in Issue #8:
+W3 — product detail / docs expansion — is **PARKED / NOT AUTHORIZED**.
 
-- Cloudflare Workers Static Assets;
-- accepted GitHub `main` as production source;
-- `https://poweredbyproof.com` as canonical public hostname;
-- Cloudflare HTTPS/TLS and intended Website DNS binding;
-- public crawl/indexing activation at accepted launch;
-- production smoke/evidence recording.
+Do not automatically begin product pages, docs expansion, screenshots/demos, changelog/news, downloads, contact/community work, analytics/tracking, forms, auth, pricing, or other new Website scope.
 
-W2 does **not** authorize analytics/tracking/cookies, forms, accounts/auth, payments/pricing, email-routing changes, unrelated Cloudflare zone/project mutations, Proof Core exposure, changes to other Proof repositories, or W3 expansion.
-
-Stop after W2 production proof and Review-Control acceptance. Do not automatically begin W3.
+Wait for explicit owner direction before promoting the next gate.
