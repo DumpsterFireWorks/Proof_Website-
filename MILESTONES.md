@@ -47,43 +47,46 @@ Accepted finish line:
 - progressive SOURCE → DEPLOY → CLOUD → CORE story and optional Base;
 - Proof Stage treatment for product/application presentation;
 - explicit `PLATFORM`, `OPERATIONS`, `APPLICATION`, `CONCEPT` classifications;
-- desktop/iPad/phone/404 evidence and exact-head green CI;
-- no W2 hosting mutation included.
+- desktop/iPad/phone/404 evidence and exact-head green CI.
 
 ## W2 — Public hosting and domain activation
 
-**State:** ACTIVE  
-**Issue:** #8 — open  
-**Production domain:** `poweredbyproof.com`
+**State:** COMPLETE  
+**Issue:** #8 — closed complete  
+**Production domain:** `https://poweredbyproof.com`  
+**Hosting:** Cloudflare Workers Static Assets
 
-Finish line:
-
-Publish the accepted flagship Website through **Cloudflare Workers Static Assets** at `https://poweredbyproof.com` with:
+Accepted finish line:
 
 - production sourced only from accepted GitHub `main`;
-- Cloudflare-managed HTTPS/TLS;
-- Proof Core remaining private;
-- deliberate public crawl/indexing policy replacing the temporary review hold;
-- canonical/sitemap/404/static-routing behavior appropriate to production;
-- optional `www` → apex redirect where practical;
+- Cloudflare-managed HTTPS/TLS at `poweredbyproof.com`;
+- Proof Core remains private;
+- public crawl/indexing policy, canonical URLs, sitemap, and custom 404 are production-ready;
 - no analytics/tracking/cookies/forms/accounts/auth/payments introduced;
-- public verification of all four accepted routes and 404 behavior;
-- non-secret production configuration/evidence recorded in GitHub.
+- final flagship brand system uses the approved master PROOF identity, all ten official product identities, and approved ecosystem hero;
+- exact final flagship head `c6fb730b59bb72206ecd41661d41ea8a8136e154` accepted through PR #12;
+- flagship squash merge `447ce2ba4c7446ee6ba96f6769f9055f9b49a1bb`;
+- final W2 site / Cloudflare dry-run CI `32589179629` — PASS;
+- final responsive visual QA `32589179620` — PASS;
+- Cloudflare GitHub authorization repaired and repository re-selected after a disconnected integration was discovered;
+- fresh accepted-main deployment trigger `6f359c944cb0aad505284f33d082bd149d99dd1d` deployed the accepted site;
+- owner confirmed the accepted flagship build live and working in production;
+- non-secret launch evidence recorded at `evidence/w2/PRODUCTION_ACCEPTANCE.md`.
 
-Feature/Codex branches may have previews when useful, but cannot replace production automatically. W2 must stop after production proof and Review-Control acceptance.
+GitHub remains source of truth. Cloudflare remains replaceable hosting rather than product authority.
 
 ## W3 — Product detail / docs expansion
 
-**State:** PARKED
+**State:** PARKED — NOT AUTHORIZED
 
 Possible later work:
 
 - individual product pages;
 - public documentation;
-- screenshots/demos;
+- real screenshots/demos;
 - changelog/news;
 - downloads;
 - contact/community paths;
 - deeper public architecture visuals.
 
-Promote only when a real public need exists.
+Promote only when the owner identifies a real public need. Do not begin automatically.
