@@ -1,3 +1,19 @@
+# Owner development hold — 2026-09-12
+
+**ON HOLD — IMPORTANT ONGOING PROJECT — PLANNED TO RESUME — NO DATE SET.**
+
+Chris explicitly paused development of this project to focus on ChatBack, ChatBack-Model and Cynthia. This is the current owner instruction and overrides older instructions below to continue, repair, audit, merge, deploy or advance. Preserve the unfinished gate, branches, PRs, code and research. Resume only on explicit owner instruction; no automatic restart.
+
+This is a development hold only. It does not authorize archiving, deletion, decommissioning, service shutdown, deployment or infrastructure changes. Preserve running services and existing use. Proof and ChatBack share a server; preserve shared runtime foundations and potential future Proof Cloud integration. No host, storage, backup, network, tunnel, credential or recovery changes are authorized.
+
+Full owner decision: [portfolio priorities and shared-server boundary](https://github.com/DumpsterFireWorks/Repo-Index-on-GitHub/blob/main/OWNER_PROJECT_PRIORITIES_2026-09-12.md).
+
+---
+
+## Preserved pre-hold project record
+
+The original record below retains progress, evidence and restart context. Its prior next-action/active-work wording is suspended by the owner hold above.
+
 # Proof Website
 
 Public-facing website for the **whole Proof ecosystem**.
