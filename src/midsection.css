@@ -1,0 +1,340 @@
+/*
+  Midsection alignment — 2026-09-20
+  Purpose: the "usual path" and "connected by design" sections drew the same
+  ideas in a different visual language than the hero and the platform cards.
+  This file retires the one-off shapes (slash strip, thin circles, bare text
+  boxes) and re-expresses both sections in the two component families the
+  site already uses: the navy proof-stage and the branded product card.
+  No new brand elements are introduced; product marks come from the existing
+  brand-v2 lockup swap.
+*/
+
+/* ---------- A. The usual path: the same stage, deliberately disconnected ---------- */
+
+/* Reuses .proof-stage so the navy is identical to the ecosystem stage by
+   construction. The argument is carried by the tiles: dashed and separate
+   here, solid and connected there. */
+.flagship-v2 .fragment-stage {
+  border: 1px solid #264d78;
+  border-radius: 26px;
+  padding: 34px;
+}
+
+.flagship-v2 .fragment-stage__head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.flagship-v2 .fragment-stage__head span {
+  color: #8bb6fa;
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.flagship-v2 .fragment-stage__head small {
+  color: rgba(214, 231, 255, 0.66);
+}
+
+.flagship-v2 .fragment-chain {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flagship-v2 .fragment-chain li {
+  position: static;
+  display: grid;
+  gap: 8px;
+  align-content: center;
+  justify-items: start;
+  min-height: 116px;
+  border: 1px dashed rgba(139, 182, 250, 0.42);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px 22px;
+  box-shadow: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Retire the joined-strip treatment from the old design. */
+.flagship-v2 .fragment-chain li::after,
+.flagship-v2 .fragment-chain li:not(:last-child)::after {
+  display: none;
+  content: none;
+}
+
+.flagship-v2 .fragment-chain li:first-child,
+.flagship-v2 .fragment-chain li:last-child {
+  border-radius: 14px;
+}
+
+.flagship-v2 .fragment-chain .seam-index {
+  color: #7e93ad;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.flagship-v2 .fragment-chain b {
+  color: #e8eef7;
+  font-size: 1.12rem;
+  font-weight: 750;
+}
+
+.flagship-v2 .fragment-chain small {
+  color: rgba(184, 201, 222, 0.68);
+  font-size: 0.78rem;
+}
+
+.flagship-v2 .approach-note--stage {
+  margin-top: 32px;
+}
+
+/* ---------- B. Ecosystem map: fill the column, stop the dead space ---------- */
+
+.flagship-v2 .map-zone--operations,
+.flagship-v2 .map-zone--applications {
+  display: flex;
+  flex-direction: column;
+}
+
+.flagship-v2 .map-pair,
+.flagship-v2 .map-trio {
+  flex: 1;
+  gap: 10px;
+}
+
+/* ---------- C. Branded map cards, matching the platform card grid ---------- */
+
+.flagship-v2 .map-card {
+  display: grid;
+  gap: 10px;
+  align-content: center;
+  justify-items: center;
+  border: 1px solid rgba(49, 91, 141, 0.16);
+  border-radius: 14px;
+  background: var(--paper);
+  padding: 18px 12px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(7, 30, 59, 0.06);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.flagship-v2 .map-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(48, 121, 255, 0.3);
+  box-shadow: 0 20px 48px rgba(7, 30, 59, 0.11);
+}
+
+/* Exact product marks paint as a background on the wrapper; the inner
+   <img> is deliberately hidden for assistive tech. Size the wrapper. */
+.flagship-v2 .map-card .owner-brand-lockup--exact {
+  width: 100%;
+  min-height: 104px;
+  margin: 0;
+  background-position: center;
+  background-size: 108px auto;
+}
+
+.flagship-v2 .map-card .owner-brand-lockup--master {
+  display: grid;
+  justify-items: center;
+  margin: 0;
+}
+
+.flagship-v2 .map-card b {
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+/* ---------- D. Platform zone as a navy stage, echoing the hero ---------- */
+
+.flagship-v2 .map-zone--platform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid #264d78;
+  border-radius: 26px;
+  padding: 34px;
+}
+
+.flagship-v2 .map-zone--platform .map-zone__heading {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 28px;
+}
+
+.flagship-v2 .map-zone--platform .map-zone__heading span {
+  color: #8bb6fa;
+}
+
+.flagship-v2 .map-zone--platform .map-zone__heading small {
+  color: rgba(214, 231, 255, 0.72);
+}
+
+/* The owned path: white tiles on navy, the same construction as the hero panel. */
+.flagship-v2 .platform-path {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.flagship-v2 .platform-path::before {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  top: 50%;
+  right: 12%;
+  left: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(139, 182, 250, 0.15), #2c7cff, rgba(139, 182, 250, 0.15));
+}
+
+.flagship-v2 .platform-path li {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  align-content: center;
+  min-height: 208px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  background: var(--paper);
+  padding: 20px 14px;
+  text-align: center;
+  box-shadow: 0 22px 48px rgba(2, 12, 28, 0.34);
+}
+
+.flagship-v2 .platform-path .path-index {
+  color: #8199b4;
+  font-size: 0.6rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.flagship-v2 .platform-path .owner-brand-lockup--exact {
+  width: 100%;
+  min-height: 124px;
+  margin: 0;
+  background-position: center;
+  background-size: 128px auto;
+}
+
+.flagship-v2 .platform-path b {
+  display: block;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.flagship-v2 .platform-path small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+/* ---------- E. Optional Base node, on the stage ---------- */
+
+.flagship-v2 .optional-node--stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  width: min(340px, 100%);
+  margin: 0 auto;
+  border: 1px dashed rgba(139, 182, 250, 0.55);
+  border-radius: 14px;
+  background: rgba(12, 42, 81, 0.5);
+  padding: 16px 20px;
+  text-align: center;
+}
+
+.flagship-v2 .optional-node--stage::before {
+  display: block;
+  width: 1px;
+  height: 22px;
+  content: "";
+  margin: -38px auto 6px;
+  background: rgba(139, 182, 250, 0.5);
+}
+
+/* The Base artwork is navy; on the navy stage it needs a light plate. */
+.flagship-v2 .optional-node--stage .owner-brand-lockup--exact {
+  width: 124px;
+  min-height: 92px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: var(--paper);
+  background-position: center;
+  background-size: 96px auto;
+}
+
+.flagship-v2 .optional-node--stage > span {
+  color: #8bb6fa;
+}
+
+.flagship-v2 .optional-node--stage b {
+  color: var(--paper);
+}
+
+.flagship-v2 .optional-node--stage small {
+  color: rgba(214, 231, 255, 0.72);
+}
+
+/* ---------- F. Responsive ---------- */
+
+@media (max-width: 900px) {
+  .flagship-v2 .fragment-stage {
+    padding: 24px;
+  }
+
+  .flagship-v2 .fragment-chain {
+    grid-template-columns: 1fr;
+  }
+
+  .flagship-v2 .fragment-chain li {
+    min-height: 0;
+  }
+
+  .flagship-v2 .map-zone--platform {
+    padding: 26px;
+  }
+
+  .flagship-v2 .platform-path {
+    grid-template-columns: 1fr;
+  }
+
+  .flagship-v2 .platform-path::before {
+    display: none;
+  }
+
+  .flagship-v2 .platform-path li {
+    min-height: 0;
+  }
+
+  .flagship-v2 .optional-node--stage::before {
+    margin-top: -30px;
+  }
+}

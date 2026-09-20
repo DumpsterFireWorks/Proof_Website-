@@ -131,18 +131,17 @@ function homePage(): string {
       </section>
 
       <section class="section section--problem">
-        <div class="shell split-layout">
-          <div>
-            <p class="eyebrow"><span></span>The usual path</p>
-            <h2>Building the app is only half the work.</h2>
-          </div>
-          <div class="fragment-panel">
+        <div class="shell">
+          <div class="section-heading section-heading--split">
+            <div><p class="eyebrow"><span></span>The usual path</p><h2>Building the app is only half the work.</h2></div>
             <p>Source, releases, hosting, networking, compute, data, and dashboards often arrive as separate systems. The owner is left to maintain every seam.</p>
-            <ol class="fragment-chain" aria-label="A fragmented application delivery path">
-              <li>Source</li><li>Build</li><li>Hosting</li><li>Compute</li><li>Data</li><li>Operations</li>
-            </ol>
-            <div class="approach-note"><strong>Proof changes the relationship.</strong><span>Connect the pieces, keep their responsibilities clear, and preserve a path to move, recover, and understand what you own.</span></div>
           </div>
+          <div class="fragment-stage proof-stage">
+            <div class="stage-grid" aria-hidden="true"></div>
+            <div class="fragment-stage__head"><span>Six systems, six owners of the seam</span><small>No single path through</small></div>
+            <ol class="fragment-chain" aria-label="A fragmented application delivery path"><li><span class="seam-index">01</span><b>Source</b><small>hands off, then stops</small></li><li><span class="seam-index">02</span><b>Build</b><small>its own release story</small></li><li><span class="seam-index">03</span><b>Hosting</b><small>its own runtime story</small></li><li><span class="seam-index">04</span><b>Compute</b><small>its own recovery story</small></li><li><span class="seam-index">05</span><b>Data</b><small>its own backup story</small></li><li><span class="seam-index">06</span><b>Operations</b><small>watches all of it</small></li></ol>
+          </div>
+          <div class="approach-note approach-note--stage"><strong>Proof changes the relationship.</strong><span>Connect the pieces, keep their responsibilities clear, and preserve a path to move, recover, and understand what you own.</span></div>
         </div>
       </section>
 
@@ -156,16 +155,17 @@ function homePage(): string {
           <div class="ecosystem-map" aria-label="Proof ecosystem relationships">
             <section class="map-zone map-zone--operations">
               <div class="map-zone__heading"><span>Operations</span><small>Observe without replacing authority</small></div>
-              <div class="map-pair"><div>Proof Control</div><div>Proof Cloud App</div></div>
+              <div class="map-pair"><article class="map-card"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>CONTROL</small></span></span></article><article class="map-card"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>CLOUD APP</small></span></span></article></div>
             </section>
-            <section class="map-zone map-zone--platform">
+            <section class="map-zone map-zone--platform proof-stage">
+              <div class="stage-grid" aria-hidden="true"></div>
               <div class="map-zone__heading"><span>Platform</span><small>The owned application path</small></div>
-              <ol class="platform-chain"><li><b>Deploy</b><small>Release</small></li><li><b>Cloud</b><small>Runtime</small></li><li><b>Core</b><small>Compute</small></li></ol>
-              <div class="optional-node"><span>Optional service</span><b>Proof Base</b><small>Structured data, when needed</small></div>
+              <ol class="platform-path" aria-label="Deploy to Cloud to Core"><li><span class="path-index">01</span><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>DEPLOY</small></span></span><small>Release</small></li><li><span class="path-index">02</span><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>CLOUD</small></span></span><small>Runtime</small></li><li><span class="path-index">03</span><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>CORE</small></span></span><small>Compute</small></li></ol>
+              <div class="optional-node optional-node--stage"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>BASE</small></span></span><span>Optional service</span><small>Structured data, when needed</small></div>
             </section>
             <section class="map-zone map-zone--applications">
               <div class="map-zone__heading"><span>Applications</span><small>Real software, different architecture fits</small></div>
-              <div class="map-trio"><div>Proof Quote</div><div>Proof Flow</div><div>Proof Room</div></div>
+              <div class="map-trio"><article class="map-card"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>QUOTE</small></span></span></article><article class="map-card"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>FLOW</small></span></span></article><article class="map-card"><span class="product-lockup product-lockup--compact">${proofMark}<span class="product-lockup__type"><b>PROOF</b><small>ROOM</small></span></span></article></div>
             </section>
             <section class="map-zone map-zone--concept"><div><span>Concept</span><b>Proof OS</b></div><p>Preserved exploration—not presented as available.</p></section>
           </div>
