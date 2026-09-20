@@ -1,22 +1,35 @@
-# Owner development hold — 2026-09-12
+# Current — Proof Website
 
-**ON HOLD — IMPORTANT ONGOING PROJECT — PLANNED TO RESUME — NO DATE SET.**
+**Status:** `ACTIVE — OWNER HOLD LIFTED 2026-09-20`
 
-Chris explicitly paused development of this project to focus on ChatBack, ChatBack-Model and Cynthia. This is the current owner instruction and overrides older instructions below to continue, repair, audit, merge, deploy or advance. Preserve the unfinished gate, branches, PRs, code and research. Resume only on explicit owner instruction; no automatic restart.
+**Canonical repository:** `DumpsterFireWorks/Proof_Website-`
+**Production domain:** `https://poweredbyproof.com`
 
-This is a development hold only. It does not authorize archiving, deletion, decommissioning, service shutdown, deployment or infrastructure changes. Preserve running services and existing use. Proof and ChatBack share a server; preserve shared runtime foundations and potential future Proof Cloud integration. No host, storage, backup, network, tunnel, credential or recovery changes are authorized.
+## Owner hold lifted — 2026-09-20
 
-Full owner decision: [portfolio priorities and shared-server boundary](https://github.com/DumpsterFireWorks/Repo-Index-on-GitHub/blob/main/OWNER_PROJECT_PRIORITIES_2026-09-12.md).
+The `Owner development hold — 2026-09-12` is **LIFTED** by explicit owner instruction. Development of the Proof Website may resume.
+
+The superseded hold paused this project to prioritise ChatBack, ChatBack-Model and Cynthia. That pause no longer applies to this repository. The cross-repo portfolio record at `DumpsterFireWorks/Repo-Index-on-GitHub/OWNER_PROJECT_PRIORITIES_2026-09-12.md` still describes the older state and is a separate pending update.
+
+Preservation rules carried forward from the hold, unchanged: no archiving, deletion, decommissioning or service shutdown. Proof and ChatBack share a server; shared runtime foundations and potential future Proof Cloud integration are preserved. Lifting this hold authorises no host, storage, backup, network, tunnel, credential or recovery change.
+
+## Deploy path change — 2026-09-20
+
+Production deployment moves off the Cloudflare Git integration to direct `wrangler deploy` from the owner's working copy. Recorded in `DECISIONS.md`.
+
+**Pending owner action:** disconnect the Cloudflare Git integration for the `proof-website` Worker in the Cloudflare dashboard. Until that is done there are two publishers for one Worker, and a push to `main` can rebuild and overwrite a direct deploy.
+
+**Deploy command (owner machine, Windows):** `npm run build` then `npx wrangler deploy`.
+
+Assistant shells cannot perform the deploy: the egress proxy denies `api.cloudflare.com:443` (gateway `403` on `CONNECT`) from both the local device VM and the cloud container. Source edits, builds and post-deploy verification are unaffected.
 
 ---
 
-## Preserved pre-hold project record
+## Preserved project record
 
-The original record below retains progress, evidence and restart context. Its prior next-action/active-work wording is suspended by the owner hold above.
+The record below is accepted history and remains true. Its pre-hold next-action wording is superseded by the `Next valid action` at the end of this file.
 
-# Current — Proof Website
-
-**Status:** `W2 COMPLETE — PRODUCTION LIVE`
+### Accepted state at hold — W2 COMPLETE, PRODUCTION LIVE
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`  
 **Production domain:** `https://poweredbyproof.com`
@@ -103,4 +116,4 @@ Do not begin W3 automatically.
 
 ## Next valid action
 
-`STOP — W2 IS COMPLETE AND PRODUCTION IS LIVE. WAIT FOR OWNER DIRECTION BEFORE PROMOTING W3 OR ANY NEW WEBSITE WORK.`
+`CONTINUE — HOLD LIFTED. W2 REMAINS COMPLETE AND PRODUCTION LIVE. AWAIT OWNER SCOPE FOR THE NEXT WEBSITE CHANGE. DISCONNECT THE CLOUDFLARE GIT INTEGRATION BEFORE THE FIRST DIRECT WRANGLER DEPLOY. W3 IS STILL PARKED AND NOT AUTHORISED.`

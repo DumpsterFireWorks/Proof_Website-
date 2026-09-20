@@ -58,3 +58,27 @@ A public site that exposes every internal fact is not more truthful; it is less 
 **Decision:** V1 does not add pricing, plans, waitlists, customer claims, multi-tenancy, SLAs, sales forms, or market-positioning obligations merely because Proof now has a website.
 
 The site first explains what has actually been built and why.
+
+## 2026-09-20 — Owner development hold lifted
+
+**Decision:** The `Owner development hold — 2026-09-12` is lifted by explicit owner instruction. Proof Website development resumes.
+
+The hold's preservation rules (no archiving, deletion, decommissioning, service shutdown, or host/storage/backup/network/tunnel/credential/recovery change) are carried forward unchanged. Lifting the hold authorises development, not infrastructure mutation.
+
+The cross-repo portfolio record `OWNER_PROJECT_PRIORITIES_2026-09-12.md` in `DumpsterFireWorks/Repo-Index-on-GitHub` still reflects the pre-lift state and is a separate pending update.
+
+## 2026-09-20 — Deploy directly with Wrangler, not the Cloudflare Git integration
+
+**Decision:** Production deploys to the `proof-website` Worker are performed by direct `wrangler deploy` from the owner's working copy. The Cloudflare Git integration is to be disconnected.
+
+Rationale: the owner does not want the deploy path to depend on GitHub. The Cloudflare Git integration is not GitHub Actions, but it does make GitHub a required link in the production chain.
+
+Consequences:
+
+- GitHub remains source of truth for history, review and offsite backup. Commits are still pushed to `DumpsterFireWorks/Proof_Website-`.
+- GitHub is no longer a required link in the production chain.
+- The Cloudflare Git integration for `proof-website` must be disconnected. Until it is, two publishers target one Worker and a push to `main` can overwrite a direct deploy.
+- Deploy command on the owner machine: `npm run build` then `npx wrangler deploy`.
+- The `.github/workflows` CI performs checks only and never shipped production; it is unaffected by this decision.
+- Assistant shells cannot run the deploy. The egress proxy denies `api.cloudflare.com:443` with a gateway `403` on `CONNECT`, from both the local device VM and the cloud container. Assistant work is limited to source changes, builds, validation and post-deploy verification.
+- The portability commitment is unchanged: the site remains static assets and can move off Cloudflare.
