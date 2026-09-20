@@ -4,3 +4,6 @@ dist/
 .wrangler/
 browser-evidence/
 *.log
+
+Claude outputs/
+proof-website-dist.zip

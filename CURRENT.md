@@ -17,9 +17,21 @@ Preservation rules carried forward from the hold, unchanged: no archiving, delet
 
 Production deployment moves off the Cloudflare Git integration to direct `wrangler deploy` from the owner's working copy. Recorded in `DECISIONS.md`.
 
-**Pending owner action:** disconnect the Cloudflare Git integration for the `proof-website` Worker in the Cloudflare dashboard. Until that is done there are two publishers for one Worker, and a push to `main` can rebuild and overwrite a direct deploy.
+**Completed 2026-09-20:** the Cloudflare Git integration for the `proof-website` Worker was disconnected by the owner. The Worker now has a single publisher. GitHub remains source of truth for history and is no longer part of the production chain.
 
 **Deploy command (owner machine, Windows):** `npm run build` then `npx wrangler deploy`.
+
+### First direct deploy — 2026-09-20
+
+- deploy path: `npx wrangler deploy` from the owner working copy (Wrangler `4.125.0`, pinned in `package.json`)
+- account: `Chris@appliedintelco.com's Account`
+- Worker: `proof-website`
+- Version ID: `970996cb-2442-42e5-a750-56514751b069`
+- assets: 41 read from `dist`, 10 new or modified uploaded, 22 already present
+- workers.dev trigger: `https://proof-website.chris-5a6.workers.dev`
+- public verification: `https://poweredbyproof.com/` rendered the revised usual-path and connected-by-design sections, with owner product artwork loading in both.
+
+Website source at this deploy corresponds to local commit `38718f6`, which was not yet pushed to GitHub at deploy time. Push before treating `main` as the record of what is live.
 
 Assistant shells cannot perform the deploy: the egress proxy denies `api.cloudflare.com:443` (gateway `403` on `CONNECT`) from both the local device VM and the cloud container. Source edits, builds and post-deploy verification are unaffected.
 
