@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof — Own the path from idea to application</title>
+<style>
+:root{
+  --bg:#04070f; --bg2:#071326;
+  --ink:#eef6ff; --muted:#a7bad0; --dim:#6e8096;
+  --panel:rgba(10,22,42,.74); --line:rgba(153,190,230,.18);
+  --blue:#2f9cff; --blue2:#8bddff; --deep:#055ef9;
+  --teal:#30ead8; --green:#4cff86; --indigo:#858dff; --silver:#cdd9e8;
+  --red:#ff2f3f; --red2:#ff7780;
+  --radius:30px;
+  --shadow:0 30px 90px rgba(0,0,0,.42);
+  --glow-blue:0 0 42px rgba(47,156,255,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.backdrop{
+  position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(47,156,255,.20), transparent 32%),
+    radial-gradient(circle at 82% 10%, rgba(47,156,255,.10), transparent 26%),
+    radial-gradient(circle at 60% 86%, rgba(48,234,216,.08), transparent 30%),
+    linear-gradient(#050813, #060b14 50%, #03050a);
+}
+.backdrop::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px) 0 0/54px 54px,
+    linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px) 0 0/54px 54px;
+  mask-image:linear-gradient(rgba(0,0,0,.8), transparent 82%);
+}
+.shell{width:min(1180px, calc(100% - 44px)); margin-inline:auto}
+section{padding-block:clamp(70px,9vw,120px)}
+
+/* ---------- labels ---------- */
+.section-label{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:12px; letter-spacing:.28em; font-weight:900;
+  color:#94ccff; text-transform:uppercase; margin-bottom:14px;
+}
+.section-label span{
+  width:48px; height:2px; background:linear-gradient(90deg,var(--blue),var(--teal));
+  box-shadow:0 0 16px var(--blue);
+}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(56px,7vw,92px)}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center}
+.hero h1{
+  font-size:clamp(54px,7.4vw,108px); line-height:.85; letter-spacing:-.075em;
+  font-weight:900; margin:14px 0 22px; text-shadow:0 0 42px rgba(47,156,255,.15);
+}
+.lede{color:var(--muted); font-size:clamp(16px,1.25vw,19px); line-height:1.6; max-width:52ch; margin:0 0 26px}
+.btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:26px}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  border-radius:999px; padding:15px 24px; font-weight:900; font-size:15px;
+  border:1px solid rgba(255,255,255,.12); letter-spacing:-.01em;
+  text-decoration:none; color:var(--ink);
+}
+.btn.primary{
+  color:#06101c; border-color:transparent;
+  background:linear-gradient(135deg,#93d8ff,#2e98ff);
+  box-shadow:0 0 34px rgba(47,156,255,.46), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.signals{display:flex; gap:22px; flex-wrap:wrap; list-style:none; padding:0; margin:0;
+  font-size:12px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; color:#8fb0d2}
+.signals b{color:var(--blue); margin-right:6px}
+
+/* ---------- hero panel ---------- */
+.stage{
+  position:relative; overflow:hidden;
+  border:1px solid rgba(143,196,255,.18); border-radius:42px;
+  background:linear-gradient(145deg, rgba(13,27,51,.76), rgba(4,8,17,.72));
+  box-shadow:var(--shadow), var(--glow-blue);
+  padding:26px;
+}
+.stage::before{
+  content:""; position:absolute; inset:auto -15% -22%; height:260px;
+  background:radial-gradient(rgba(47,156,255,.42), transparent 58%),
+             radial-gradient(at 65% 45%, rgba(48,234,216,.28), transparent 52%);
+  filter:blur(10px);
+}
+.stage-top{
+  position:relative; z-index:1; display:flex; justify-content:space-between; gap:12px;
+  color:#9fb9d7; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:900;
+  margin-bottom:22px;
+}
+.path{position:relative; z-index:1; display:grid; gap:12px; margin:0; padding:0; list-style:none}
+.path li{
+  display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;
+  border:1px solid rgba(150,202,255,.2); border-radius:20px;
+  background:rgba(3,9,19,.7); padding:16px 18px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.path b{font-size:18px; letter-spacing:-.03em}
+.path small{display:block; color:var(--dim); font-size:12px; margin-top:2px}
+.path img{width:74px; display:block; background:#fff; border-radius:9px; padding:5px 7px}
+.optional{
+  position:relative; z-index:1; margin-top:14px; text-align:center;
+  border:1px dashed rgba(139,182,250,.45); border-radius:18px;
+  background:rgba(12,42,81,.4); padding:14px;
+}
+.optional em{display:block; font-style:normal; font-size:11px; font-weight:900;
+  letter-spacing:.2em; text-transform:uppercase; color:#8bddff}
+.optional b{display:block; font-size:16px; margin-top:4px; letter-spacing:-.02em}
+.optional small{color:var(--dim); font-size:12px}
+
+/* ---------- headline kicker ---------- */
+.kicker{
+  font-size:clamp(30px,4.4vw,62px); line-height:1.0; font-weight:900;
+  letter-spacing:-.055em; margin:0 0 18px; color:#fff;
+}
+.sub{color:var(--muted); font-size:17px; line-height:1.6; max-width:62ch; margin:0}
+
+/* ---------- fragmented path ---------- */
+.frag{display:grid; grid-template-columns:repeat(3,1fr); gap:40px 26px;
+  margin:52px 0 0; padding:0; list-style:none; text-align:center}
+.frag li{position:relative; padding:4px 8px}
+.frag b{display:block; font-size:clamp(23px,2.4vw,32px); line-height:1.08;
+  letter-spacing:-.045em; color:#fff; text-shadow:0 0 34px rgba(47,156,255,.28)}
+.frag b::after{
+  content:""; display:block; width:54px; height:2px; margin:14px auto 12px; border-radius:2px;
+  background:linear-gradient(90deg,var(--blue),var(--red));
+  box-shadow:0 0 20px rgba(47,156,255,.7);
+}
+.frag small{display:block; color:#a7bad0; font-size:14px; line-height:1.5}
+
+/* ---------- product grid ---------- */
+.grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px}
+.grid article{
+  position:relative; overflow:hidden;
+  border:1px solid var(--line); border-radius:26px;
+  background:var(--panel); padding:26px 22px 24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.grid article::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:3px; opacity:.92;
+  background:linear-gradient(90deg,var(--blue),rgba(47,156,255,.08));
+}
+.grid .teal::before{background:linear-gradient(90deg,var(--teal),rgba(39,224,216,.08))}
+.grid .green::before{background:linear-gradient(90deg,var(--green),rgba(84,255,138,.08))}
+.grid .indigo::before{background:linear-gradient(90deg,var(--indigo),rgba(122,115,255,.08))}
+.grid img{width:118px; display:block; background:#fff; border-radius:12px; padding:8px 10px; margin-bottom:18px}
+.grid h3{font-size:20px; letter-spacing:-.035em; margin:0 0 8px}
+.grid p{color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px}
+.grid em{font-style:normal; font-size:11px; font-weight:900; letter-spacing:.16em;
+  text-transform:uppercase; color:#8fb0d2}
+
+/* ---------- flow rail ---------- */
+.rail{display:flex; align-items:center; gap:20px; flex-wrap:wrap; margin-top:18px}
+.rail article{
+  position:relative; border:1px solid rgba(255,255,255,.12); border-radius:999px;
+  padding:11px 20px; font-weight:900; font-size:13.5px; background:rgba(9,18,34,.7);
+}
+.rail article:not(:last-child)::after{
+  content:""; position:absolute; right:-20px; top:50%; width:20px; height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+}
+
+/* ---------- practice ---------- */
+.practice{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:38px}
+.practice article{
+  position:relative; overflow:hidden; border:1px solid var(--line); border-radius:26px;
+  background:var(--panel); padding:26px 22px;
+}
+.practice article::before{
+  content:""; position:absolute; inset:0 0 auto; height:4px; opacity:.95;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+}
+.practice h3{font-size:19px; letter-spacing:-.035em; margin:0 0 10px}
+.practice p{color:var(--muted); font-size:13.5px; line-height:1.55; margin:0 0 14px}
+.tags{display:flex; gap:8px; flex-wrap:wrap}
+.tags span{border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:6px 13px;
+  font-size:11.5px; font-weight:900; color:#a7c4e4}
+
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:40;
+  backdrop-filter:blur(14px); background:rgba(4,7,15,.72);
+  border-bottom:1px solid rgba(153,190,230,.12);
+}
+.site-header .shell{display:flex; align-items:center; gap:26px; padding-block:14px}
+.brand{display:flex; align-items:center; gap:13px; margin-right:auto; text-decoration:none; color:var(--ink)}
+.brand-orb{
+  width:52px; height:52px; border-radius:17px; display:grid; place-items:center;
+  background:linear-gradient(145deg, rgba(48,156,255,.2), rgba(255,255,255,.04));
+  box-shadow:var(--glow-blue), inset 0 0 0 1px rgba(142,210,255,.35);
+}
+.brand-orb img{width:32px; display:block; filter:brightness(0) invert(1); opacity:.95}
+.brand strong{display:block; font-size:17px; letter-spacing:-.02em}
+.brand em{display:block; font-style:normal; font-size:10px; letter-spacing:.28em;
+  color:#9fbce0; font-weight:900; margin-top:2px}
+.nav{display:flex; gap:24px; align-items:center}
+.nav a{color:#b9cde6; text-decoration:none; font-size:14px; font-weight:800; letter-spacing:-.01em}
+.nav a.on{color:#fff}
+.btn.sm{padding:11px 20px; font-size:13.5px}
+
+/* ---------- case cards ---------- */
+.cases{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:38px}
+.case{
+  position:relative; overflow:hidden; border:1px solid var(--line); border-radius:26px;
+  background:var(--panel); padding:26px 24px 24px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+.case::before{content:""; position:absolute; inset:0 0 auto; height:4px; opacity:.95;
+  background:linear-gradient(90deg,var(--blue),var(--red))}
+.case.t-blue{border-color:rgba(47,156,255,.28); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 18px 48px rgba(47,156,255,.13)}
+.case.t-red{border-color:rgba(255,82,96,.26); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 18px 48px rgba(255,47,63,.11)}
+.case.t-teal{border-color:rgba(48,234,216,.26); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 18px 48px rgba(48,234,216,.11)}
+.case-top{display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:16px}
+.case-top em{font-style:normal; font-size:11px; font-weight:900; letter-spacing:.22em;
+  text-transform:uppercase; color:#92d2ff}
+.case-top .badge{border:1px solid rgba(255,255,255,.14); border-radius:999px;
+  padding:6px 14px; font-size:11.5px; font-weight:900; color:#cfe0f5; white-space:nowrap}
+.case h3{font-size:clamp(21px,2.1vw,27px); line-height:1.08; letter-spacing:-.04em; margin:0 0 12px}
+.case p{color:var(--muted); font-size:14px; line-height:1.55; margin:0 0 18px}
+.flow{display:flex; align-items:center; gap:20px; flex-wrap:wrap}
+.flow span{
+  position:relative; border:1px solid rgba(255,255,255,.12); border-radius:999px;
+  padding:9px 17px; font-size:12.5px; font-weight:900; background:rgba(9,18,34,.7);
+}
+.flow span:not(:last-child)::after{
+  content:""; position:absolute; right:-20px; top:50%; width:20px; height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--red));
+}
+
+/* ---------- closing strip ---------- */
+.strip{
+  margin-top:42px; border:1px solid var(--line); border-radius:22px;
+  background:var(--panel); padding:22px 26px;
+  display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+}
+.strip b{font-size:19px; letter-spacing:-.03em}
+.strip span{color:var(--muted); font-size:14px}
+
+
+/* ---------- interaction (lifted verbatim from appliedintelco.com) ---------- */
+.grid article, .case, .path li, .stage, .optional, .strip, .flow span, .rail article, .frag li{
+  transition:transform .22s, border-color .22s, box-shadow .22s;
+}
+.grid article:hover, .case:hover, .path li:hover, .optional:hover, .strip:hover,
+.flow span:hover, .rail article:hover{
+  border-color:rgba(155,213,255,.36);
+  box-shadow:
+    0 0 0 1px rgba(115,185,255,.12),
+    0 24px 70px rgba(47,156,255,.2),
+    inset 0 1px 0 rgba(255,255,255,.07);
+  transform:translateY(-1px);
+}
+.stage:hover{transform:translateY(-2px)}
+.frag li:hover{transform:translateY(-2px)}
+.nav a{padding:8px 14px; border-radius:999px; transition:background .22s, color .22s, box-shadow .22s}
+.nav a:hover, .nav a.on{
+  background:rgba(255,255,255,.08); color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);
+}
+/* mine, not theirs — they have no button hover */
+.btn{transition:transform .22s, box-shadow .22s, background .22s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary:hover{box-shadow:0 0 46px rgba(47,156,255,.6), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn:not(.primary):hover{background:rgba(255,255,255,.06)}
+
+@media (max-width:980px){
+  .nav{display:none}
+  .cases{grid-template-columns:1fr}
+}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr; gap:34px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .frag{grid-template-columns:repeat(2,1fr)}
+  .practice{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="backdrop"></div>
+
+<header class="site-header">
+  <div class="shell">
+    <a class="brand" href="#">
+      <span class="brand-orb"><img src="https://poweredbyproof.com/brand/master/proof-master.svg" alt=""></span>
+      <span><strong>Proof</strong><em>Own what you build</em></span>
+    </a>
+    <nav class="nav">
+      <a class="on" href="#">Home</a><a href="#">Ecosystem</a><a href="#">Products</a><a href="#">Principles</a>
+    </nav>
+    <a class="btn primary sm" href="#">Start small</a>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell hero-grid">
+    <div>
+      <p class="section-label"><span></span>An owner-first software ecosystem</p>
+      <h1>Own the path from idea to application.</h1>
+      <p class="lede">Proof connects the work of building, deploying, running, and understanding applications—without turning ownership into a promise from one more provider.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="#">Explore the ecosystem →</a>
+        <a class="btn" href="#">See the products</a>
+      </div>
+      <ul class="signals">
+        <li><b>✓</b>Modular</li><li><b>✓</b>Portable</li><li><b>✓</b>Evidence-driven</li>
+      </ul>
+    </div>
+    <div class="stage">
+      <div class="stage-top"><span>The owned application path</span></div>
+      <ol class="path">
+        <li><div><b>Deploy</b><small>Proven release</small></div><img src="https://poweredbyproof.com/brand/display/proof-deploy.png" alt="Proof Deploy"></li>
+        <li><div><b>Cloud</b><small>Owned runtime</small></div><img src="https://poweredbyproof.com/brand/display/proof-cloud.png" alt="Proof Cloud"></li>
+        <li><div><b>Core</b><small>Compute foundation</small></div><img src="https://poweredbyproof.com/brand/display/proof-core.png" alt="Proof Core"></li>
+      </ol>
+      <div class="optional"><em>Optional service</em><b>Proof Base</b><small>Structured data, when needed</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="shell">
+    <p class="section-label"><span></span>The usual path</p>
+    <h2 class="kicker">Building the app is only half the work.</h2>
+    <p class="sub">Source, releases, hosting, networking, compute, data, and dashboards often arrive as separate systems. The owner is left to maintain every seam.</p>
+    <ol class="frag">
+      <li><b>Source</b><small>Hands off, then stops</small></li>
+      <li><b>Build</b><small>Owns its own release story</small></li>
+      <li><b>Hosting</b><small>Owns its own runtime story</small></li>
+      <li><b>Compute</b><small>Owns its own recovery story</small></li>
+      <li><b>Data</b><small>Owns its own backup story</small></li>
+      <li><b>Operations</b><small>Watches all of it</small></li>
+    </ol>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section>
+  <div class="shell">
+    <p class="section-label"><span></span>The platform</p>
+    <h2 class="kicker">Four clear responsibilities.</h2>
+    <p class="sub" style="margin-bottom:38px">Build, runtime, compute, and optional structured data remain distinct so each can be understood, recovered, and changed on its own terms.</p>
+    <div class="grid">
+      <article>
+        <img src="https://poweredbyproof.com/brand/display/proof-deploy.png" alt="Proof Deploy">
+        <h3>Deploy</h3><p>Turns an exact approved source revision into a provable release path, keeping build, promotion, and rollback identities explicit.</p>
+        <em>Build and release authority</em>
+      </article>
+      <article class="teal">
+        <img src="https://poweredbyproof.com/brand/display/proof-cloud.png" alt="Proof Cloud">
+        <h3>Cloud</h3><p>Runs already-proven releases through explicit workload contracts and owns runtime isolation, routes, health, and recovery boundaries.</p>
+        <em>Runtime and hosting</em>
+      </article>
+      <article class="green">
+        <img src="https://poweredbyproof.com/brand/display/proof-core.png" alt="Proof Core">
+        <h3>Core</h3><p>Provides the owned physical compute and reproducible host baseline Proof workloads run on, without collapsing host and application authority.</p>
+        <em>Owned compute foundation</em>
+      </article>
+      <article class="indigo">
+        <img src="https://poweredbyproof.com/brand/display/proof-base.png" alt="Proof Base">
+        <h3>Base</h3><p>Defines an optional, portable PostgreSQL-based direction for applications that genuinely need centralized relational capability.</p>
+        <em>Optional structured data</em>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section>
+  <div class="shell">
+    <p class="section-label"><span></span>Proof in practice</p>
+    <h2 class="kicker">Real applications prove the system is modular.</h2>
+    <p class="sub">Three applications. Three legitimate architecture choices. No requirement to force them into one identical stack.</p>
+    <div class="cases">
+      <article class="case t-blue">
+        <div class="case-top"><em>Proof Quote</em><span class="badge">Manufacturing estimating</span></div>
+        <h3>A proven owned hosting path.</h3>
+        <p>Runs on Deploy, Cloud and Core today. Base is not required for its current hosting path, and pretending otherwise would be architecture theatre.</p>
+        <div class="flow"><span>Deploy</span><span>Cloud</span><span>Core</span></div>
+      </article>
+      <article class="case t-teal">
+        <div class="case-top"><em>Proof Room</em><span class="badge">Photography workflow</span></div>
+        <h3>Local-first is the right fit.</h3>
+        <p>Using fewer shared layers is a feature when it protects the real workflow. Self-hosted, SQLite, local — chosen deliberately, not by default.</p>
+        <div class="flow"><span>Self-hosted</span><span>SQLite</span><span>Local</span></div>
+      </article>
+      <article class="case t-red">
+        <div class="case-top"><em>Proof Flow</em><span class="badge">Shop-floor analysis</span></div>
+        <h3>A genuine relational-data need.</h3>
+        <p>Structured data, review and analytics make this the natural future compatibility case for optional Proof Base.</p>
+        <div class="flow"><span>Structured data</span><span>Review</span><span>Analytics</span></div>
+      </article>
+      <article class="case">
+        <div class="case-top"><em>Proof Control</em><span class="badge">Operator surface</span></div>
+        <h3>See the system without moving its source of truth.</h3>
+        <p>One local-first view across Core, Cloud, Deploy, workloads, health and alerts. The product underneath still owns the state being shown.</p>
+        <div class="flow"><span>Observe</span><span>Attend</span><span>Recover</span></div>
+      </article>
+    </div>
+    <div class="strip">
+      <b>Modular, not mandatory.</b>
+      <span>An application uses the parts that solve its real problem.</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

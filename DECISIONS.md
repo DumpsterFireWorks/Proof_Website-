@@ -82,3 +82,44 @@ Consequences:
 - The `.github/workflows` CI performs checks only and never shipped production; it is unaffected by this decision.
 - Assistant shells cannot run the deploy. The egress proxy denies `api.cloudflare.com:443` with a gateway `403` on `CONNECT`, from both the local device VM and the cloud container. Assistant work is limited to source changes, builds, validation and post-deploy verification.
 - The portability commitment is unchanged: the site remains static assets and can move off Cloudflare.
+
+## 2026-09-20 — Visual direction under review: dark high-vibrance treatment
+
+**Status:** `PROPOSED — NOT ACCEPTED, NOT IMPLEMENTED`
+
+The owner asked for the Website to adopt the visual language of `appliedintelco.com`
+rather than the current W1.5 flagship system. A full-page reference implementation of
+the Proof homepage in that language is committed at `design/v3-direction-reference.html`.
+
+This entry records the direction and its provenance. It does not accept it, and it does
+not supersede W1.5. The live site is unchanged.
+
+Direction, as extracted from the live Applied Intelligence site:
+
+- near-black base `#04070f` with a fixed backdrop layer: three radial blooms over a
+  vertical gradient, plus a 54px grid overlay masked to fade out;
+- display type at `letter-spacing: -0.075em`, `line-height: 0.85`, heaviest available
+  weight, with a soft blue text-shadow;
+- section labels at `letter-spacing: 0.28em` preceded by a 48px glowing gradient rule;
+- glass panels and cards with thin light borders, inset top highlights, and
+  colour-coded gradient top rules;
+- pill buttons and pill "flow rails" joined by short gradient connectors;
+- hover: `translateY(-1px)` with a brighter border and a wide blue glow, over `0.22s`.
+
+Open questions before this could be accepted:
+
+- **Typeface.** Applied Intelligence loads no web font; it resolves to the platform UI
+  font, so it renders as SF Pro on Apple devices and Segoe UI on Windows. The reference
+  inherits that inconsistency. Committing to a single typeface across platforms means
+  loading a web font, with the page-weight cost that implies.
+- **Brand separation.** The reference uses the Applied Intelligence red accent alongside
+  Proof blue. That makes Proof read as an Applied Intelligence sibling rather than a
+  distinct brand. A blue-only variant is a small change.
+- **Placeholder copy.** The header tagline and the primary call to action in the
+  reference are placeholders and are not Proof's voice.
+- **Scope.** The reference covers the homepage only. Ecosystem, Products and Principles
+  share the same components but have not been treated.
+
+Accepting this direction would replace the W1.5 flagship visual system, which is
+recorded as accepted and Review-Control PASS. That supersession should be explicit
+and should not happen implicitly through incremental edits.
