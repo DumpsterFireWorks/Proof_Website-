@@ -1,6 +1,6 @@
 # Current — Proof Website
 
-**Status:** `ACTIVE — OWNER HOLD LIFTED 2026-09-20`
+**Status:** `ACTIVE — V3 VISUAL SYSTEM LIVE`
 
 **Canonical repository:** `DumpsterFireWorks/Proof_Website-`
 **Production domain:** `https://poweredbyproof.com`
@@ -12,6 +12,16 @@ The `Owner development hold — 2026-09-12` is **LIFTED** by explicit owner inst
 The superseded hold paused this project to prioritise ChatBack, ChatBack-Model and Cynthia. That pause no longer applies to this repository. The cross-repo portfolio record at `DumpsterFireWorks/Repo-Index-on-GitHub/OWNER_PROJECT_PRIORITIES_2026-09-12.md` still describes the older state and is a separate pending update.
 
 Preservation rules carried forward from the hold, unchanged: no archiving, deletion, decommissioning or service shutdown. Proof and ChatBack share a server; shared runtime foundations and potential future Proof Cloud integration are preserved. Lifting this hold authorises no host, storage, backup, network, tunnel, credential or recovery change.
+
+## Visual system — V3, 2026-09-21
+
+The dark high-vibrance visual system is implemented across all four public routes and
+supersedes W1.5. Styling lives in `src/v3.css`; layout, component structure and public
+copy are unchanged. `npm run typecheck`, `npm run build` and `npm run validate` all pass.
+
+Carried forward as open items: the typeface resolves per platform because no web font is
+loaded; the header tagline is placeholder copy; and the Applied Intelligence red accent
+is retained, so Proof currently reads as a sibling brand rather than a distinct one.
 
 ## Deploy path change — 2026-09-20
 

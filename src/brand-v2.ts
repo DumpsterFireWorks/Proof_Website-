@@ -2,6 +2,7 @@ import "./flagship-v2.css";
 import "./final-brand.css";
 import "./final-brand-render-fix.css";
 import "./midsection.css";
+import "./v3.css";
 
 const proofMasterUrl = "/brand/master/proof-master.svg";
 const proofHeroUrl = "/brand/hero/proof-ecosystem-hero.png";
@@ -102,6 +103,13 @@ function addPremiumSignals(): void {
     scanline.setAttribute("aria-hidden", "true");
     hero.append(scanline);
   }
+}
+
+if (!document.querySelector(".v3-backdrop")) {
+  const backdrop = document.createElement("div");
+  backdrop.className = "v3-backdrop";
+  backdrop.setAttribute("aria-hidden", "true");
+  document.body.prepend(backdrop);
 }
 
 replaceGeneratedMarks();

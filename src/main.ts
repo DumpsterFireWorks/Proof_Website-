@@ -30,6 +30,20 @@ function productLockup(productName?: string, compact = false): string {
   return `<span class="product-lockup${compact ? " product-lockup--compact" : ""}">${proofMark}<span class="product-lockup__type"><b>PROOF</b>${productName ? `<small>${productName.replace("Proof ", "").toUpperCase()}</small>` : ""}</span></span>`;
 }
 
+function v3Brand(): string {
+  return `
+    <span class="v3-brand-orb" aria-hidden="true">
+      <svg class="v3-brand-mark" viewBox="0 0 72 72" focusable="false">
+        <circle class="ring" cx="36" cy="36" r="28" pathLength="100"></circle>
+        <path class="signal" d="M15 54A28 28 0 0 1 15 18"></path>
+        <path class="letter" d="M27 57V27h17c8 0 13 5 13 12s-5 12-13 12H34V34h10c3 0 5 2 5 5s-2 5-5 5"></path>
+        <path class="check" d="m38 39 6 6 13-15"></path>
+      </svg>
+    </span>
+    <span class="v3-brand-type"><strong>Proof</strong><em>Own what you build</em></span>
+  `;
+}
+
 function header(): string {
   const links = routes
     .map(({ href, label, page: routePage }) => {
@@ -42,8 +56,8 @@ function header(): string {
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="brand" href="/" aria-label="Proof home">
-          ${productLockup(undefined, true)}
+        <a class="brand v3-brand" href="/" aria-label="Proof home">
+          ${v3Brand()}
         </a>
         <nav class="primary-nav" aria-label="Primary navigation">${links}</nav>
       </div>
@@ -56,7 +70,7 @@ function footer(): string {
     <footer class="site-footer">
       <div class="shell footer-grid">
         <div>
-          <a class="brand brand--footer" href="/" aria-label="Proof home">${productLockup(undefined, true)}</a>
+          <a class="brand brand--footer v3-brand" href="/" aria-label="Proof home">${v3Brand()}</a>
           <p>One connected ecosystem. Separate responsibilities. Ownership that lasts.</p>
         </div>
         <nav aria-label="Footer navigation">

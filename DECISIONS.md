@@ -85,7 +85,7 @@ Consequences:
 
 ## 2026-09-20 — Visual direction under review: dark high-vibrance treatment
 
-**Status:** `PROPOSED — NOT ACCEPTED, NOT IMPLEMENTED`
+**Status:** `ACCEPTED AND IMPLEMENTED 2026-09-21 — SUPERSEDES W1.5`
 
 The owner asked for the Website to adopt the visual language of `appliedintelco.com`
 rather than the current W1.5 flagship system. A full-page reference implementation of
@@ -120,6 +120,34 @@ Open questions before this could be accepted:
 - **Scope.** The reference covers the homepage only. Ecosystem, Products and Principles
   share the same components but have not been treated.
 
-Accepting this direction would replace the W1.5 flagship visual system, which is
-recorded as accepted and Review-Control PASS. That supersession should be explicit
-and should not happen implicitly through incremental edits.
+## 2026-09-21 — Dark high-vibrance direction accepted and implemented
+
+**Decision:** The direction proposed on 2026-09-20 is accepted and implemented across
+all four public routes. It **supersedes the W1.5 flagship visual system**, which was
+previously recorded as accepted with Review-Control PASS. W1.5 is now historical.
+
+Implementation shape:
+
+- `src/v3.css` is loaded last and owns surface, colour, type weight and interaction.
+  Layout, component structure and public copy are unchanged, so the site validator's
+  four routes and preserved reference assets still pass unmodified.
+- The existing design tokens were retoned rather than replaced, which flips most
+  surfaces in one move. `--proof-ink` in `flagship-v2.css` also had to be retoned,
+  because `.flagship-v2 .page-hero h1` uses it and outranks a bare `h1` selector.
+- `main.ts` gained `v3Brand()`. The packaged brand asset is a full lockup and becomes
+  unreadable at header size, so the header and footer now render the symbol alone as
+  inline SVG with the wordmark as live text.
+- Product artwork is navy and disappears on dark surfaces, so every lockup sits on a
+  light plate with a constrained width.
+
+Open items deliberately not resolved here:
+
+- **Typeface still resolves per platform.** No web font is loaded, so headlines render
+  as SF Pro on Apple devices and Segoe UI on Windows. Consistent type across platforms
+  would require loading a font and accepting the page-weight cost.
+- **The header tagline `Own what you build` is placeholder copy** and is not Proof's
+  settled voice.
+- **The Applied Intelligence red accent is retained**, so Proof currently reads as an
+  Applied Intelligence sibling. A blue-only variant remains a small change.
+- `design/v3-direction-reference.html` is the standalone reference page and is not
+  wired into the build.
